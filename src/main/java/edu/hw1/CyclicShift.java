@@ -16,7 +16,7 @@ public class CyclicShift {
         do {
             num /= 2;
             size += 1;
-        } while(num > 0);
+        } while (num > 0);
 
         num = number;
         byte[] arr = new byte[size];
@@ -36,7 +36,7 @@ public class CyclicShift {
         for (int i = 0; i < arr.length; ++i) {
             ans[(i + shift) % arr.length] = arr[i];
         }
-        LOGGER.trace("Shifting {}", number);
+        LOGGER.trace("Shifting right {}", number);
 
         int num = 0;
         for (var each : ans) {
@@ -51,9 +51,9 @@ public class CyclicShift {
         byte[] ans = new byte[arr.length];
 
         for (int i = 0; i < arr.length; ++i) {
-            ans[((i - shift)%arr.length + arr.length) % arr.length] = arr[i];
+            ans[((i - shift) % arr.length + arr.length) % arr.length] = arr[i];
         }
-        LOGGER.trace("Shifting {}", number);
+        LOGGER.trace("Shifting left {}", number);
 
         int num = 0;
         for (var each : ans) {
