@@ -11,10 +11,11 @@ public class IsPalindromeDescendant {
     }
 
     public static int[] getSymbols(int number) {
+        final int TEN = 10;
         int num = number;
         int size = 0;
         do {
-            num /= 10;
+            num /= TEN;
             size++;
         } while (num > 0);
 
@@ -22,15 +23,15 @@ public class IsPalindromeDescendant {
 
         num = number;
         for (int i = 0; i < size; ++i) {
-            arr[size - 1 - i] = num % 10;
-            num /= 10;
+            arr[size - 1 - i] = num % TEN;
+            num /= TEN;
         }
 
         return arr;
     }
 
     public static boolean isPalyndrom(int[] arr) {
-        for (int i =0 ; i < arr.length; ++i) {
+        for (int i = 0; i < arr.length; ++i) {
             if (arr[i] != arr[arr.length - i - 1]) {
                 return false;
             }
@@ -40,8 +41,8 @@ public class IsPalindromeDescendant {
 
     public static boolean isPalindromeDescendant(int number) {
         int num = number;
-
-        while (true){
+        final int TEN = 10;
+        while (true) {
             LOGGER.trace("Checking {}, ", num);
 
             int[] arr = getSymbols(num);
@@ -54,10 +55,10 @@ public class IsPalindromeDescendant {
             }
 
             num = 0;
-            for(int i = 1; i < arr.length; i += 2) {
-                num *= 10;
-                if (arr[i] + arr[i - 1] >= 10) {
-                    num *= 10;
+            for (int i = 1; i < arr.length; i += 2) {
+                num *= TEN;
+                if (arr[i] + arr[i - 1] >= TEN) {
+                    num *= TEN;
                 }
                 num += arr[i] + arr[i - 1];
             }
