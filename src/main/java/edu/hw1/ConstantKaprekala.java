@@ -37,6 +37,7 @@ public class ConstantKaprekala {
             return -1;
         }
 
+
         return constantKaprekala(abs(num1 - num2)) + 1;
     }
 }
