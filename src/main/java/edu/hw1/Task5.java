@@ -3,15 +3,15 @@ package edu.hw1;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class IsPalindromeDescendant {
+public class Task5 {
     private final static Logger LOGGER = LogManager.getLogger();
+    private final static int TEN = 10;
 
-    private IsPalindromeDescendant() {
+    private Task5() {
 
     }
 
     public static int[] getSymbols(int number) {
-        final int TEN = 10;
         int num = number;
         int size = 0;
         do {
@@ -41,7 +41,6 @@ public class IsPalindromeDescendant {
 
     public static boolean isPalindromeDescendant(int number) {
         int num = number;
-        final int TEN = 10;
         while (true) {
             LOGGER.trace("Checking {}, ", num);
 

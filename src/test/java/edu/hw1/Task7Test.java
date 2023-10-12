@@ -4,37 +4,38 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CyclicShiftTest {
+public class Task7Test {
     @Test
-    @DisplayName("Базовый тест1")
+    @DisplayName("Сдвиг 8 на 1 бит вправо")
     void basicTest1() {
         int number = 8;
         int shift = 1;
 
-        int answer = CyclicShift.rotateRight(number, shift);
+        int answer = Task7.rotateRight(number, shift);
 
         assertThat(answer)
             .isEqualTo(4);
     }
+
     @Test
-    @DisplayName("Базовый тест2")
+    @DisplayName("Сдвиг 16 на 1 бит влево")
     void basicTest2() {
         int number = 16;
         int shift = 1;
 
-        int answer = CyclicShift.rotateLeft(number, shift);
+        int answer = Task7.rotateLeft(number, shift);
 
         assertThat(answer)
             .isEqualTo(1);
     }
 
     @Test
-    @DisplayName("Базовый тест3")
+    @DisplayName("Сдвиг 17 на 2 бита влево")
     void basicTest3() {
         int number = 17;
         int shift = 2;
 
-        int answer = CyclicShift.rotateLeft(number, shift);
+        int answer = Task7.rotateLeft(number, shift);
 
         assertThat(answer)
             .isEqualTo(6);
@@ -46,7 +47,7 @@ public class CyclicShiftTest {
         int number = 17;
         int shift = 0;
 
-        int answer = CyclicShift.rotateLeft(number, shift);
+        int answer = Task7.rotateLeft(number, shift);
 
         assertThat(answer)
             .isEqualTo(17);
@@ -58,7 +59,7 @@ public class CyclicShiftTest {
         int number = 17;
         int shift = 0;
 
-        int answer = CyclicShift.rotateRight(number, shift);
+        int answer = Task7.rotateRight(number, shift);
 
         assertThat(answer)
             .isEqualTo(17);
@@ -70,7 +71,7 @@ public class CyclicShiftTest {
         int number = 0;
         int shift = 13;
 
-        int answer = CyclicShift.rotateLeft(number, shift);
+        int answer = Task7.rotateLeft(number, shift);
 
         assertThat(answer)
             .isEqualTo(0);

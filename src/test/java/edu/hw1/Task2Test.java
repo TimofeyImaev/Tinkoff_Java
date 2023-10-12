@@ -4,35 +4,36 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class NumberOfNumbersTest {
+public class Task2Test {
 
     @Test
-    @DisplayName("Базовый тест1")
+    @DisplayName("Четырёхзначное число")
     void basicTest1() {
         int number = 4666;
 
-        int answer = CountDigits.countDigits(number);
+        int answer = Task2.countDigits(number);
 
         assertThat(answer)
             .isEqualTo(4);
     }
+
     @Test
-    @DisplayName("Базовый тест2")
+    @DisplayName("Трёхзначное число")
     void basicTest2() {
         int number = 544;
 
-        int answer = CountDigits.countDigits(number);
+        int answer = Task2.countDigits(number);
 
         assertThat(answer)
             .isEqualTo(3);
     }
 
     @Test
-    @DisplayName("Базовый тест3")
+    @DisplayName("Двузначное число")
     void basicTest3() {
         int number = 12;
 
-        int answer = CountDigits.countDigits(number);
+        int answer = Task2.countDigits(number);
 
         assertThat(answer)
             .isEqualTo(2);
@@ -43,7 +44,7 @@ public class NumberOfNumbersTest {
     void zeroTest() {
         int number = 0;
 
-        int answer = CountDigits.countDigits(number);
+        int answer = Task2.countDigits(number);
 
         assertThat(answer)
             .isEqualTo(1);
@@ -54,7 +55,7 @@ public class NumberOfNumbersTest {
     void oneTest() {
         int number = 1;
 
-        int answer = CountDigits.countDigits(number);
+        int answer = Task2.countDigits(number);
 
         assertThat(answer)
             .isEqualTo(1);

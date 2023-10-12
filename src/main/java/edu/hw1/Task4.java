@@ -3,10 +3,10 @@ package edu.hw1;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class FixString {
+public class Task4 {
     private final static Logger LOGGER = LogManager.getLogger();
 
-    private FixString() {
+    private Task4() {
 
     }
 

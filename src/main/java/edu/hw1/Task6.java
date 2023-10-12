@@ -5,10 +5,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static java.lang.Math.abs;
 
-public class ConstantKaprekala {
+public class Task6 {
     private final static Logger LOGGER = LogManager.getLogger();
+    private final static int TEN = 10;
 
-    private ConstantKaprekala() {
+    private Task6() {
 
     }
 
@@ -20,7 +21,6 @@ public class ConstantKaprekala {
             return 0;
         }
 
-        final int TEN = 10;
         char[] arr = String.valueOf(number).toCharArray();
 
         Arrays.sort(arr);

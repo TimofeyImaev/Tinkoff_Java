@@ -4,45 +4,46 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class specialPalindromeTest {
+public class Task5Test {
     @Test
-    @DisplayName("Базовый тест1")
+    @DisplayName("Число 11211230 выводит true")
     void basicTest1() {
         int number = 11211230;
 
-        boolean answer = IsPalindromeDescendant.isPalindromeDescendant(number);
+        boolean answer = Task5.isPalindromeDescendant(number);
 
         assertThat(answer)
             .isEqualTo(true);
     }
+
     @Test
-    @DisplayName("Базовый тест2")
+    @DisplayName("Число 13001120 выводит true")
     void basicTest2() {
         int number = 13001120;
 
-        boolean answer = IsPalindromeDescendant.isPalindromeDescendant(number);
+        boolean answer = Task5.isPalindromeDescendant(number);
 
         assertThat(answer)
             .isEqualTo(true);
     }
 
     @Test
-    @DisplayName("Базовый тест3")
+    @DisplayName("Число 23336014 выводит true")
     void basicTest3() {
         int number = 23336014;
 
-        boolean answer = IsPalindromeDescendant.isPalindromeDescendant(number);
+        boolean answer = Task5.isPalindromeDescendant(number);
 
         assertThat(answer)
             .isEqualTo(true);
     }
 
     @Test
-    @DisplayName("Базовый тест4")
+    @DisplayName("Двузначное число")
     void basicTest4() {
         int number = 11;
 
-        boolean answer = IsPalindromeDescendant.isPalindromeDescendant(number);
+        boolean answer = Task5.isPalindromeDescendant(number);
 
         assertThat(answer)
             .isEqualTo(true);
@@ -53,7 +54,7 @@ public class specialPalindromeTest {
     void oddLength() {
         int number = 122;
 
-        boolean answer = IsPalindromeDescendant.isPalindromeDescendant(number);
+        boolean answer = Task5.isPalindromeDescendant(number);
 
         assertThat(answer)
             .isEqualTo(false);
@@ -64,7 +65,7 @@ public class specialPalindromeTest {
     void oneFromTen() {
         int number = 10;
 
-        boolean answer = IsPalindromeDescendant.isPalindromeDescendant(number);
+        boolean answer = Task5.isPalindromeDescendant(number);
 
         assertThat(answer)
             .isEqualTo(false);
@@ -75,7 +76,7 @@ public class specialPalindromeTest {
     void oneTest() {
         int number = 1;
 
-        boolean answer = IsPalindromeDescendant.isPalindromeDescendant(number);
+        boolean answer = Task5.isPalindromeDescendant(number);
 
         assertThat(answer)
             .isEqualTo(true);

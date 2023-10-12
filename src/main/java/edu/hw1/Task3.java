@@ -3,10 +3,10 @@ package edu.hw1;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class IsNestable {
+public class Task3 {
     private final static Logger LOGGER = LogManager.getLogger();
 
-    private IsNestable() {
+    private Task3() {
 
     }
 
@@ -21,13 +21,13 @@ public class IsNestable {
         int maxArr2 = arr2[0];
 
         for (var each : arr1) {
-            minArr1 = each < minArr1 ? each : minArr1;
-            maxArr1 = each > maxArr1 ? each : maxArr1;
+            minArr1 = Math.min(each, minArr1);
+            maxArr1 = Math.max(each, maxArr1);
         }
 
         for (var each : arr2) {
-            minArr2 = each < minArr2 ? each : minArr2;
-            maxArr2 = each > maxArr2 ? each : maxArr2;
+            minArr2 = Math.min(each, minArr2);
+            maxArr2 = Math.max(each, maxArr2);
         }
 
         return minArr1 > minArr2 && maxArr1 < maxArr2;

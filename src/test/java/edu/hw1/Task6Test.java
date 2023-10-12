@@ -4,45 +4,46 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class ConstantKaprekalaTest {
+public class Task6Test {
     @Test
-    @DisplayName("Базовый тест1")
+    @DisplayName("Число 6621 выводит 5 операций")
     void basicTest1() {
         int number = 6621;
 
-        int answer = ConstantKaprekala.constantKaprekala(number);
+        int answer = Task6.constantKaprekala(number);
 
         assertThat(answer)
             .isEqualTo(5);
     }
+
     @Test
-    @DisplayName("Базовый тест2")
+    @DisplayName("Число 6554 выводит 4 операции")
     void basicTest2() {
         int number = 6554;
 
-        int answer = ConstantKaprekala.constantKaprekala(number);
+        int answer = Task6.constantKaprekala(number);
 
         assertThat(answer)
             .isEqualTo(4);
     }
 
     @Test
-    @DisplayName("Базовый тест3")
+    @DisplayName("Число 1234 выводит 3 операции")
     void basicTest3() {
         int number = 1234;
 
-        int answer = ConstantKaprekala.constantKaprekala(number);
+        int answer = Task6.constantKaprekala(number);
 
         assertThat(answer)
             .isEqualTo(3);
     }
 
     @Test
-    @DisplayName("Базовый тест4")
+    @DisplayName("Число 3524 выводит 3 операции")
     void basicTest4() {
         int number = 3524;
 
-        int answer = ConstantKaprekala.constantKaprekala(number);
+        int answer = Task6.constantKaprekala(number);
 
         assertThat(answer)
             .isEqualTo(3);
@@ -53,7 +54,7 @@ public class ConstantKaprekalaTest {
     void sameNumbers1() {
         int number = 2222;
 
-        int answer = ConstantKaprekala.constantKaprekala(number);
+        int answer = Task6.constantKaprekala(number);
 
         assertThat(answer)
             .isEqualTo(-1);
@@ -64,7 +65,7 @@ public class ConstantKaprekalaTest {
     void sameNumbers2() {
         int number = 5555;
 
-        int answer = ConstantKaprekala.constantKaprekala(number);
+        int answer = Task6.constantKaprekala(number);
 
         assertThat(answer)
             .isEqualTo(-1);
