@@ -13,8 +13,9 @@ public class Task1Test {
         int answer = Task1.minutesToSeconds(arr);
 
         assertThat(answer)
-            .isEqualTo(12*60 + 51);
+            .isEqualTo(12 * 60 + 51);
     }
+
     @Test
     @DisplayName("Однозначные минуты и двузначные секунды")
     void basicTest2() {
@@ -23,7 +24,7 @@ public class Task1Test {
         int answer = Task1.minutesToSeconds(arr);
 
         assertThat(answer)
-            .isEqualTo(2*60 + 31);
+            .isEqualTo(2 * 60 + 31);
     }
 
     @Test
@@ -34,7 +35,7 @@ public class Task1Test {
         int answer = Task1.minutesToSeconds(arr);
 
         assertThat(answer)
-            .isEqualTo(215*60 + 0);
+            .isEqualTo(215 * 60 + 0);
     }
 
     @Test

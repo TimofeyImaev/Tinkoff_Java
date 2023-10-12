@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 
 public final class Task1 {
     private final static Logger LOGGER = LogManager.getLogger();
+    private final static int SEC_IN_MIN = 60;
+    private final static int BIG_INTEGER = 100;
 
     private Task1() {
 
@@ -12,8 +14,6 @@ public final class Task1 {
 
     public static int minutesToSeconds(String args) {
         int cntColon = 0;
-        final int secInMin = 60;
-        final int bigInteger = 100;
 
         LOGGER.trace("Converting time {} to seconds", args);
 
@@ -21,7 +21,7 @@ public final class Task1 {
             if (args.charAt(i) == ':') {
                 cntColon++;
             } else if (args.charAt(i) < '0' || args.charAt(i) > '9') {
-                cntColon = bigInteger;
+                cntColon = BIG_INTEGER;
             }
         }
 
@@ -32,8 +32,8 @@ public final class Task1 {
                 Integer minutes = Integer.valueOf(arr[0]);
                 Integer seconds = Integer.valueOf(arr[1]);
 
-                if (seconds.intValue() <= secInMin) {
-                    return minutes * secInMin + seconds;
+                if (seconds.intValue() <= SEC_IN_MIN) {
+                    return minutes * SEC_IN_MIN + seconds;
                 }
             }
         }
