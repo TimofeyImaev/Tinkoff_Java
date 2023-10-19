@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Task1 {
     private final static Logger LOGGER = LogManager.getLogger();
+
     public Task1() {
 
     }
@@ -13,7 +14,6 @@ public class Task1 {
         double evaluate();
 
         record Constant(double num) implements Expr {
-
             @Override
             public double evaluate() {
                 return this.num;
@@ -21,7 +21,6 @@ public class Task1 {
         }
 
         record Negate(Expr c) implements Expr {
-
             @Override
             public double evaluate() {
                 LOGGER.trace("{} to negative", this.c);
@@ -53,5 +52,4 @@ public class Task1 {
             }
         }
     }
-
 }

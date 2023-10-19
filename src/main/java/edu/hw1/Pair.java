@@ -13,4 +13,9 @@ public class Pair<A, B> {
         this.first = null;
         this.second = null;
     }
+
+    @Override
+    public String toString() {
+        return first.toString() + ' ' + second.toString();
+    }
 }
