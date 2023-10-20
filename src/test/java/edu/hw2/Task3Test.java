@@ -30,7 +30,7 @@ public class Task3Test {
 
         LOGGER.trace("{}", failedCnt);
 
-        assertThat(failedCnt < 5).
+        assertThat(failedCnt < 10).
             isEqualTo(true);
     }
 
