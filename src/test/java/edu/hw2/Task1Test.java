@@ -9,25 +9,27 @@ public class Task1Test {
     @Nested
     class AdditionTests {
         @Test
-        @DisplayName("testThat 2 + 3 Returned 5")
-        void basicSumTest1() {
-            Task1.Expr.Constant a = new Task1.Expr.Constant(2), b = new Task1.Expr.Constant(3);
+        @DisplayName("testThat sum of 2 and 3 is Returned 5")
+        void givenTwoNumbersWhenCalculateSumThenReturnSum1() {
+            Task1.Expr.Constant firstNum = new Task1.Expr.Constant(2),
+                secondNum = new Task1.Expr.Constant(3);
+            double expectedSum = 5;
 
-            double answer = (new Task1.Expr.Addition(a, b)).evaluate();
+            double actualSum = (new Task1.Expr.Addition(firstNum, secondNum)).evaluate();
 
-            assertThat(answer)
-                .isEqualTo(5);
+            assertThat(actualSum).isEqualTo(expectedSum);
         }
 
         @Test
-        @DisplayName("testThat 95 + 101 Returned 196")
-        void basicSumTest2() {
-            Task1.Expr.Constant a = new Task1.Expr.Constant(95), b = new Task1.Expr.Constant(101);
+        @DisplayName("testThat sum of 95 and 101 is Returned 196")
+        void givenTwoNumbersWhenCalculateSumThenReturnSum2() {
+            Task1.Expr.Constant firstNum = new Task1.Expr.Constant(95),
+                secondNum = new Task1.Expr.Constant(101);
+            double expectedSum = 196;
 
-            double answer = (new Task1.Expr.Addition(a, b)).evaluate();
+            double actualSum = (new Task1.Expr.Addition(firstNum, secondNum)).evaluate();
 
-            assertThat(answer)
-                .isEqualTo(196);
+            assertThat(actualSum).isEqualTo(expectedSum);
         }
 
         @Test
