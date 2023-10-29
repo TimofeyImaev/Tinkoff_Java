@@ -11,7 +11,7 @@ public class Task6 {
     class Stock {
         int price;
 
-        public Stock(int price) {
+        Stock(int price) {
             this.price = price;
         }
 
@@ -31,7 +31,7 @@ public class Task6 {
         Stock mostValuableStock();
     }
 
-    static class stockExchange implements StockMarket {
+    static class StockExchange implements StockMarket {
         PriorityQueue<Stock> sharesInOrder;
         TreeMap<Stock, Integer> deletedShares;
 

@@ -1,7 +1,6 @@
 package edu.hw3;
 
 import java.util.Comparator;
-import java.util.Map;
 
 public class Task7 {
 
