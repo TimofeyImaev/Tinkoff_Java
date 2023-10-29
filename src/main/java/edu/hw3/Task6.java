@@ -1,9 +1,9 @@
 package edu.hw3;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Task6 {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -27,8 +27,23 @@ public class Task6 {
             return stock.price - this.price;
         }
 
-        public boolean equals(Stock stock) {
-            return this.price == stock.price;
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) {
+                return true;
+            }
+
+            if (obj == null || obj.getClass() != this.getClass()) {
+                return false;
+            }
+
+            Stock stock = (Stock) obj;
+            return stock.price == this.price;
+        }
+
+        @Override
+        public int hashCode() {
+            return 1;
         }
     }
 
@@ -47,19 +62,17 @@ public class Task6 {
         PriorityQueue<Stock> sharesInOrder;
         TreeMap<Stock, Integer> deletedShares;
 
-        public StockExchange() {
+        StockExchange() {
             this.sharesInOrder = new PriorityQueue<>();
             this.deletedShares = new TreeMap<>();
         }
 
-        @Override
-        public void add(Stock stock) {
+        @Override public void add(Stock stock) {
             LOGGER.trace("Adding stock with price {}", stock.price);
             sharesInOrder.add(stock);
         }
 
-        @Override
-        public void remove(Stock stock) {
+        @Override public void remove(Stock stock) {
             LOGGER.trace("Removing stock with price {}", stock.price);
 
             if (deletedShares.containsKey(stock)) {
@@ -69,18 +82,21 @@ public class Task6 {
             }
         }
 
-        @Override
-        public Stock mostValuableStock() {
+        @Override public Stock mostValuableStock() {
             Stock mostExpensiveStock = sharesInOrder.peek();
 
-            if(mostExpensiveStock == null) return null;
+            if (mostExpensiveStock == null) {
+                return null;
+            }
             while (deletedShares.containsKey(mostExpensiveStock)
                 && deletedShares.get(mostExpensiveStock).compareTo(1) >= 0) {
                 deletedShares.put(mostExpensiveStock, deletedShares.get(mostExpensiveStock) - 1);
                 sharesInOrder.remove();
 
                 mostExpensiveStock = sharesInOrder.peek();
-                if(mostExpensiveStock == null) return null;
+                if (mostExpensiveStock == null) {
+                    return null;
+                }
             }
 
             LOGGER.trace("MostValuableStock price is {}", mostExpensiveStock.price);
