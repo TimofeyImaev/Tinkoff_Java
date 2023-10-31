@@ -1,8 +1,8 @@
 package edu.hw2;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task1Test {
@@ -33,8 +33,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("testThat -5 + 8 Returned 3")
-        void basicSumTest3() {
+        @DisplayName("testThat sum of -5 and 8 is Returned 3")
+        void givenTwoNumbersWhenCalculateSumThenReturnSum3() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(-5), b = new Task1.Expr.Constant(8);
 
             double answer = (new Task1.Expr.Addition(a, b)).evaluate();
@@ -44,8 +44,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("sum of zeros")
-        void zeros() {
+        @DisplayName("testThat sum of zeros equals zero")
+        void givenTwoZerosWhenCalculateSumThenReturnSum3() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(0), b = new Task1.Expr.Constant(0);
 
             double answer = (new Task1.Expr.Addition(a, b)).evaluate();
@@ -55,8 +55,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("number 5152 plus zero")
-        void zeroNumber1() {
+        @DisplayName("testThat sum of 5152 and zero is Returned 5152")
+        void givenNumberAndZeroWhenCalculateSumThenReturnSum1() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(5152), b = new Task1.Expr.Constant(0);
 
             double answer = (new Task1.Expr.Addition(a, b)).evaluate();
@@ -66,8 +66,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("number 197 plus zero")
-        void zeroNumber2() {
+        @DisplayName("testThat sum of 197 and zero is Returned 197")
+        void givenNumberAndZeroWhenCalculateSumThenReturnSum2() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(197), b = new Task1.Expr.Constant(0);
 
             double answer = (new Task1.Expr.Addition(a, b)).evaluate();
@@ -80,8 +80,8 @@ public class Task1Test {
     @Nested
     class Negate {
         @Test
-        @DisplayName("negate of 4")
-        void basicNegateTest1() {
+        @DisplayName("given 4 then Returned Multiplicative inverse of 4")
+        void givenNumberWhenNegateThenReturnedNegatedNumber1() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(4);
 
             double answer = (new Task1.Expr.Negate(a)).evaluate();
@@ -91,8 +91,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("negate of 10")
-        void basicNegateTest2() {
+        @DisplayName("given 10 then Returned Multiplicative inverse of 10")
+        void givenNumberWhenNegateThenReturnedNegatedNumber2() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(10);
 
             double answer = (new Task1.Expr.Negate(a)).evaluate();
@@ -102,8 +102,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("negate of 512")
-        void basicNegateTest3() {
+        @DisplayName("given 512 then Returned Multiplicative inverse of 512")
+        void givenNumberWhenNegateThenReturnedNegatedNumber3() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(512);
 
             double answer = (new Task1.Expr.Negate(a)).evaluate();
@@ -113,8 +113,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("negate of zero")
-        void zeroNegateTest() {
+        @DisplayName("given zero testThat negate of zero equals zero")
+        void givenZeroWhenNegateZeroTheReturnedZero() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(0);
 
             double answer = (new Task1.Expr.Negate(a)).evaluate();
@@ -124,8 +124,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("negate of -4")
-        void negativeNumberNegate() {
+        @DisplayName("given -4 then Returned Multiplicative inverse of -4")
+        void givenNegativeNumberWhenNegateTheReturnedPositiveNumber() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(-4);
 
             double answer = (new Task1.Expr.Negate(a)).evaluate();
@@ -138,8 +138,8 @@ public class Task1Test {
     @Nested
     class MultiplicationTest {
         @Test
-        @DisplayName("testThat 2 * 2 Returned 4")
-        void basicTest1() {
+        @DisplayName("testThat multiplication of 2 and 2 Returned 4")
+        void givenTwoNumbersWhenMultiplicationNumbersThenReturnedProduct1() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(2), b = new Task1.Expr.Constant(2);
 
             double answer = (new Task1.Expr.Multiplication(a, b)).evaluate();
@@ -149,8 +149,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("testThat 5 * 7 Returned 35")
-        void basicTest2() {
+        @DisplayName("testThat multiplication of 5 and 7 Returned 35")
+        void givenTwoNumbersWhenMultiplicationNumbersThenReturnedProduct2() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(5), b = new Task1.Expr.Constant(7);
 
             double answer = (new Task1.Expr.Multiplication(a, b)).evaluate();
@@ -160,8 +160,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("testThat -8 * 4 Returned -32")
-        void basicTest3() {
+        @DisplayName("testThat multiplication of -8 and 4 Returned -32")
+        void givenTwoNumbersWhenMultiplicationNumbersThenReturnedProduct3() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(-8), b = new Task1.Expr.Constant(4);
 
             double answer = (new Task1.Expr.Multiplication(a, b)).evaluate();
@@ -171,8 +171,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("number 51263 mul zero")
-        void zeroNumberMul1() {
+        @DisplayName("testThat multiplication of 51263 and zero Returned zero")
+        void givenNumberAndZeroWhenMultiplicationNumbersThenReturnedZero1() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(51263), b = new Task1.Expr.Constant(0);
 
             double answer = (new Task1.Expr.Multiplication(a, b)).evaluate();
@@ -182,8 +182,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("number 124 mul zero")
-        void zeroNumberMul2() {
+        @DisplayName("testThat multiplication of 124 and zero Returned zero")
+        void givenNumberAndZeroWhenMultiplicationNumbersThenReturnedZero2() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(124), b = new Task1.Expr.Constant(0);
 
             double answer = (new Task1.Expr.Multiplication(a, b)).evaluate();
@@ -193,8 +193,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("number 24 mul 1")
-        void oneNumberMul1() {
+        @DisplayName("testThat multiplication of 24 and one Returned 24")
+        void givenNumberAndOneWhenMultiplicationNumbersThenReturnedOne1() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(24), b = new Task1.Expr.Constant(1);
 
             double answer = (new Task1.Expr.Multiplication(a, b)).evaluate();
@@ -204,8 +204,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("number -5 mul 1")
-        void oneNumberMul2() {
+        @DisplayName("testThat multiplication of -5 and one Returned -5")
+        void givenNumberAndOneWhenMultiplicationNumbersThenReturnedOne2() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(-5), b = new Task1.Expr.Constant(1);
 
             double answer = (new Task1.Expr.Multiplication(a, b)).evaluate();
@@ -218,8 +218,8 @@ public class Task1Test {
     @Nested
     class ExponentTest {
         @Test
-        @DisplayName("testThat 2 ** 5 Returned 32")
-        void basicExponentTest1() {
+        @DisplayName("testThat 2 in power 5 is returned 32")
+        void givenTwoNumbersWhenExponentiateThenReturnedNumberRaisedInPower1() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(2);
             double b = 5;
 
@@ -230,8 +230,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("testThat 3 ** 4 Returned 81")
-        void basicExponentTest2() {
+        @DisplayName("testThat 3 in power 4 is returned 81")
+        void givenTwoNumbersWhenExponentiateThenReturnedNumberRaisedInPower2() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(3);
             double b = 4;
 
@@ -242,8 +242,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("testThat 5 ** 4 Returned 625")
-        void basicExponentTest3() {
+        @DisplayName("testThat 5 in power 4 is returned 625")
+        void givenTwoNumbersWhenExponentiateThenReturnedNumberRaisedInPower3() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(5);
             double b = 4;
 
@@ -254,8 +254,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("512 in zero power")
-        void zeroPower1() {
+        @DisplayName("testThat 512 in power zero equals 1")
+        void givenNumberAndZeroWhenExponentiateThenReturnedOne1() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(512);
             double b = 0;
 
@@ -266,8 +266,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("86 in zero power")
-        void zeroPower2() {
+        @DisplayName("testThat 86 in power zero equals 1")
+        void givenNumberAndZeroWhenExponentiateThenReturnedOne2() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(86);
             double b = 0;
 
@@ -278,8 +278,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("256 in 1/2 power")
-        void fractionalPower1() {
+        @DisplayName("testThat 256 in power 1/2 is Returned 16")
+        void givenNumberAndFractionNumberWhenExponentiateThenReturnedNumberRaisedInPower1() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(256);
             double b = (double) 1 / 2;
 
@@ -290,8 +290,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("27 in 1/3 power")
-        void fractionalPower2() {
+        @DisplayName("testThat 27 in power 1/3 is Returned 3")
+        void givenNumberAndFractionNumberWhenExponentiateThenReturnedNumberRaisedInPower2() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(27);
             double b = (double) 1 / 3;
 
@@ -302,8 +302,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("5 in -1 power")
-        void negativePower1() {
+        @DisplayName("testThat 5 in power -1 is Returned 1/5")
+        void givenNumberAndMinusOneWhenExponentiateThenReturnedNumberRaisedInPower1() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(5);
             double b = -1;
 
@@ -314,8 +314,8 @@ public class Task1Test {
         }
 
         @Test
-        @DisplayName("5 in -2 power")
-        void negativePower2() {
+        @DisplayName("testThat 5 in power -2 is Returned 1/25")
+        void givenNumberAndMinusOneWhenExponentiateThenReturnedNumberRaisedInPower2() {
             Task1.Expr.Constant a = new Task1.Expr.Constant(5);
             double b = -2;
 

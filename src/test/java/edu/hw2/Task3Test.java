@@ -1,15 +1,9 @@
 package edu.hw2;
 
-import edu.hw1.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.ValueSource;
-import java.util.concurrent.ConcurrentNavigableMap;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task3Test {
@@ -17,7 +11,7 @@ public class Task3Test {
 
     @Test
     @DisplayName("testThat FaultyConnectionManager rarely fails")
-    void faultyConnectionManagerTest() {
+    void givenFaultyConnectionManagerWhenSendingCommandThenRarelyfails() {
         int failedCnt = 0;
 
         for (int i = 0; i < 100; ++i) {
@@ -36,7 +30,7 @@ public class Task3Test {
 
     @Test
     @DisplayName("testThat DefaultConnectionManager rarely fails")
-    void defaultConnectionManagerTest() {
+    void givenDefaultConnectionManagerWhenSendingCommandThenRarelyfails() {
         int failedCnt = 0;
 
         for (int i = 0; i < 100; ++i) {

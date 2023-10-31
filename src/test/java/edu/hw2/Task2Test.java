@@ -4,9 +4,6 @@ import edu.hw1.Pair;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task2Test {
@@ -20,9 +17,9 @@ public class Task2Test {
         };
     }
 
-    @ParameterizedTest(name = "testThat {argumentsWithNames} returned")
+    @ParameterizedTest(name = "given rectangle {argumentsWithNames} when counting area then returned area")
     @MethodSource("rectangles")
-    void rectangleArea(Pair<Integer, Integer> rectangleSides, int area) {
+    void testCountingAreaOfRectangle(Pair<Integer, Integer> rectangleSides, int area) {
         Task2.Rectangle rect = new Task2.Rectangle();
         rect.setWidth(rectangleSides.first);
         rect.setHeight(rectangleSides.second);
@@ -40,9 +37,9 @@ public class Task2Test {
         };
     }
 
-    @ParameterizedTest(name = "testThat {argumentsWithNames} returned")
+    @ParameterizedTest(name = "given square {argumentsWithNames} when counting area then returned area")
     @MethodSource("squares")
-    void squareArea(int squareSide, int area) {
+    void testCountingAreaOfSquare(int squareSide, int area) {
         Task2.Rectangle square = new Task2.Square();
         square.setWidth(squareSide);
         square.setHeight(squareSide);
