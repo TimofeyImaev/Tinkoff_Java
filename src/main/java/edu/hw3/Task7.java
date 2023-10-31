@@ -8,7 +8,7 @@ public class Task7 {
 
     }
 
-    public static class NullKeyComparator<K extends Comparable<K>, V> implements Comparator<K> {
+    public static class NullKeyComparator<K extends Comparable<K>> implements Comparator<K> {
 
         @Override
         public int compare(K o1, K o2) {
