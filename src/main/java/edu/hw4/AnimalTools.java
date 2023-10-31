@@ -1,14 +1,15 @@
 package edu.hw4;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class AnimalTools {
     private static final Logger LOGGER = LogManager.getLogger();
+
     private AnimalTools() {
 
     }
