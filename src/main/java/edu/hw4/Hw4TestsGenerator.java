@@ -1,5 +1,8 @@
 package edu.hw4;
 
+import java.util.List;
+import java.util.Map;
+
 public class Hw4TestsGenerator {
     private Hw4TestsGenerator() {
 
@@ -67,6 +70,7 @@ public class Hw4TestsGenerator {
         "Watson",
         "Wild",
     };
+
 
 //    public static void main(String[] args) {
 //        Random rn = new Random();
