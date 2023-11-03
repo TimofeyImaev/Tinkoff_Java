@@ -13,8 +13,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static java.util.Map.entry;
 
+@SuppressWarnings("CyclomaticComplexity")
 public class AnimalTools {
     private static final Logger LOGGER = LogManager.getLogger();
+    private static final int TEN = 10;
+    private static final int FIVE = 5;
+    private static final int SEVENTY_ONE = 71;
+    private static final int THIRTHY_EIGHT = 38;
+    private static final int THIRTHY_ONE = 31;
+    private static final int FORTY_THREE = 43;
+    private static final int ONE_HUNDRED_TWELVE = 112;
+    private static final String INCORRECT_AGE = "Incorrect age of animal";
 
     private AnimalTools() {
 
@@ -130,7 +139,7 @@ public class AnimalTools {
     //Task11
     public static List<Animal> listOfAnimalsWhichBitesAndHeightMoreTen(List<Animal> animalList) {
         return animalList.stream()
-            .filter(animal -> animal.bites() && animal.height() >= 10)
+            .filter(animal -> animal.bites() && animal.height() >= TEN)
             .collect(Collectors.toList());
     }
 
@@ -231,26 +240,26 @@ public class AnimalTools {
                     }
                 }
 
-                if (animal.type() == Animal.Type.BIRD && animal.age() > 71) {
-                    errors.add(new ValidationError("Incorrect age of animal"));
+                if (animal.type() == Animal.Type.BIRD && animal.age() > SEVENTY_ONE) {
+                    errors.add(new ValidationError(INCORRECT_AGE));
                 }
-                if (animal.type() == Animal.Type.CAT && animal.age() > 38) {
-                    errors.add(new ValidationError("Incorrect age of animal"));
+                if (animal.type() == Animal.Type.CAT && animal.age() > THIRTHY_EIGHT) {
+                    errors.add(new ValidationError(INCORRECT_AGE));
                 }
-                if (animal.type() == Animal.Type.DOG && animal.age() > 31) {
-                    errors.add(new ValidationError("Incorrect age of animal"));
+                if (animal.type() == Animal.Type.DOG && animal.age() > THIRTHY_ONE) {
+                    errors.add(new ValidationError(INCORRECT_AGE));
                 }
-                if (animal.type() == Animal.Type.SPIDER && animal.age() > 43) {
-                    errors.add(new ValidationError("Incorrect age of animal"));
+                if (animal.type() == Animal.Type.SPIDER && animal.age() > FORTY_THREE) {
+                    errors.add(new ValidationError(INCORRECT_AGE));
                 }
-                if (animal.type() == Animal.Type.FISH && animal.age() > 112) {
-                    errors.add(new ValidationError("Incorrect age of animal"));
+                if (animal.type() == Animal.Type.FISH && animal.age() > ONE_HUNDRED_TWELVE) {
+                    errors.add(new ValidationError(INCORRECT_AGE));
                 }
                 if (animal.age() < 0) {
-                    errors.add(new ValidationError("Incorrect age of animal"));
+                    errors.add(new ValidationError(INCORRECT_AGE));
                 }
 
-                if (animal.height() < 5) {
+                if (animal.height() < FIVE) {
                     errors.add(new ValidationError("Incorrect height of animal"));
                 }
                 if (animal.weight() < 1) {
