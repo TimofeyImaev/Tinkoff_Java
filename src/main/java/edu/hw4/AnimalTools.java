@@ -5,10 +5,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import static java.util.Map.entry;
 
 public class AnimalTools {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -17,6 +20,7 @@ public class AnimalTools {
 
     }
 
+    //Task1
     public static List<Animal> heightSort(List<Animal> animalList) {
         LOGGER.trace("Sorting List {}", animalList);
 
@@ -25,6 +29,7 @@ public class AnimalTools {
             .collect(Collectors.toList());
     }
 
+    //Task2
     public static List<Animal> weightSort(List<Animal> animalList, Integer k) {
         return animalList.stream()
             .sorted(Comparator.comparingInt(Animal::weight))
@@ -32,11 +37,13 @@ public class AnimalTools {
             .collect(Collectors.toList());
     }
 
+    //Task3
     public static Map<Animal.Type, Long> amountOfAnimalsInSpecies(List<Animal> animalList) {
         return animalList.stream()
             .collect(Collectors.groupingBy(Animal::type, Collectors.counting()));
     }
 
+    //Task4
     public static Animal animalWithLongestName(List<Animal> animalLst) {
         if (animalLst.isEmpty()) {
             return null;
@@ -52,6 +59,7 @@ public class AnimalTools {
             .get();
     }
 
+    //Task5
     public static Animal.Sex mostCommonSex(List<Animal> animalLst) {
         long malesCount = animalLst.stream()
             .filter(animal -> animal.sex() == Animal.Sex.M).count();
@@ -71,6 +79,7 @@ public class AnimalTools {
         return answer;
     }
 
+    //Task6
     public static Map<Animal.Type, Animal> heaviestAnimalOfEveryType(List<Animal> animalList) {
         LOGGER.trace("List of animals {}", animalList);
         return animalList.stream()
@@ -83,6 +92,7 @@ public class AnimalTools {
             ));
     }
 
+    //Task7
     public static Animal kthOldestAnimal(List<Animal> animalList, Integer k) {
         Optional<Animal> animal = animalList.stream()
             .sorted(Comparator.comparingInt(Animal::age).reversed())
@@ -96,41 +106,55 @@ public class AnimalTools {
         return animal.get();
     }
 
+    //Task8
     public static Optional<Animal> heaviestAnimalLowerK(List<Animal> animalList, Integer k) {
         return animalList.stream()
             .filter(animal -> animal.height() < k)
             .max(Comparator.comparing(Animal::weight));
     }
 
+    //Task9
     public static Integer countOfPaws(List<Animal> animalList) {
         return animalList.stream()
             .mapToInt(Animal::paws)
             .sum();
     }
 
+    //Task10
     public static List<Animal> animalsWhichAgeNotEqualsCountOfPaws(List<Animal> animalList) {
         return animalList.stream()
             .filter(animal -> animal.age() == animal.paws())
             .collect(Collectors.toList());
     }
 
+    //Task11
     public static List<Animal> listOfAnimalsWhichBitesAndHeightMoreTen(List<Animal> animalList) {
         return animalList.stream()
             .filter(animal -> animal.bites() && animal.height() >= 10)
             .collect(Collectors.toList());
     }
 
+    //Task12
     public static Integer amountOfAnimalsWhichWeightMoreHeight(List<Animal> animalList) {
         return Integer.valueOf((int) animalList.stream()
             .filter(animal -> animal.weight() > animal.height())
             .count());
     }
 
+    //Task13
+    public static List<Animal> animalListsWithNamesLongerThanTwoWords(List<Animal> animalList) {
+        return animalList.stream()
+            .filter(animal -> animal.name().split(" ").length > 2)
+            .collect(Collectors.toList());
+    }
+
+    //Task14
     public static Boolean isAnimalsListHadDogWithHeightMoreOrEqualsK(List<Animal> animalList, Integer k) {
         return animalList.stream()
             .anyMatch(animal -> animal.height() >= k);
     }
 
+    //Task15
     public static Map<Animal.Type, Integer> findTotalWeightOfEveryTypeFromKToLAge(
         List<Animal> animalList,
         Integer k,
@@ -144,6 +168,7 @@ public class AnimalTools {
             ));
     }
 
+    //Task16
     public static List<Animal> animalsListSortedByTypeSexName(List<Animal> animalList) {
         return animalList.stream()
             .sorted((firstAnimal, secondAnimal) -> {
@@ -159,6 +184,7 @@ public class AnimalTools {
             .collect(Collectors.toList());
     }
 
+    //Task17
     public static Boolean isSpidersBitesMoreOftenThenDogs(List<Animal> animalList) {
         return animalList.stream()
             .mapToInt(animal -> {
@@ -175,6 +201,7 @@ public class AnimalTools {
             .sum() > 0;
     }
 
+    //Task18
     public static Animal heaviestFishInListsOfAnimals(List<List<Animal>> animalLists) {
         Optional<Animal> heaviestFish = animalLists.stream()
             .map(Collection::stream)
@@ -188,5 +215,50 @@ public class AnimalTools {
         }
 
         return heaviestFish.get();
+    }
+
+    //Task19
+    public static Map<String, Set<ValidationError>> animalsWithValidationError(List<Animal> animalList) {
+        return animalList.stream()
+            .map(animal -> {
+                Set<ValidationError> errors = new TreeSet<ValidationError>();
+
+                for (var each : animal.name().toCharArray()) {
+                    if (!(each >= 'a' || each <= 'z') && each != ' '
+                        && !(each >= 'A' || each <= 'Z')) {
+                        errors.add(new ValidationError("Animal name should contains only latin letters and spaces"));
+                        break;
+                    }
+                }
+
+                if (animal.type() == Animal.Type.BIRD && animal.age() > 71) {
+                    errors.add(new ValidationError("Incorrect age of animal"));
+                }
+                if (animal.type() == Animal.Type.CAT && animal.age() > 38) {
+                    errors.add(new ValidationError("Incorrect age of animal"));
+                }
+                if (animal.type() == Animal.Type.DOG && animal.age() > 31) {
+                    errors.add(new ValidationError("Incorrect age of animal"));
+                }
+                if (animal.type() == Animal.Type.SPIDER && animal.age() > 43) {
+                    errors.add(new ValidationError("Incorrect age of animal"));
+                }
+                if (animal.type() == Animal.Type.FISH && animal.age() > 112) {
+                    errors.add(new ValidationError("Incorrect age of animal"));
+                }
+                if (animal.age() < 0) {
+                    errors.add(new ValidationError("Incorrect age of animal"));
+                }
+
+                if (animal.height() < 5) {
+                    errors.add(new ValidationError("Incorrect height of animal"));
+                }
+                if (animal.weight() < 1) {
+                    errors.add(new ValidationError("Incorrect weight of animal"));
+                }
+
+                return entry(animal.name(), errors);
+            })
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 }

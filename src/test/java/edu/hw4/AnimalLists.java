@@ -975,4 +975,170 @@ public class AnimalLists {
             )
         };
     }
+
+    static Arguments[] animalWithLongNamesLists() {
+        return new Arguments[] {
+            Arguments.of(
+                Arrays.asList()
+            ),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Osborne Austin Abdullah", Animal.Type.DOG, Animal.Sex.M, 26, 7, 17, true),
+                    new Animal(
+                        "Benedict Bawerman Abeyta", Animal.Type.CAT, Animal.Sex.F, 0, 69, 86, false),
+                    new Animal(
+                        "Nolan", Animal.Type.SPIDER, Animal.Sex.F, 15, 34, 48, false),
+                    new Animal(
+                        "Carlin Brown", Animal.Type.BIRD, Animal.Sex.F, 19, 20, 48, true),
+                    new Animal(
+                        "Jay Carter Ahearn", Animal.Type.CAT, Animal.Sex.F, 24, 47, 83, true),
+                    new Animal(
+                        "Admiral", Animal.Type.BIRD, Animal.Sex.F, 5, 4, 35, false),
+                    new Animal(
+                        "Fall", Animal.Type.DOG, Animal.Sex.M, 6, 49, 27, false),
+                    new Animal(
+                        "Stream Charlson Alicea", Animal.Type.CAT, Animal.Sex.M, 25, 19, 73, true)
+                )),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Caesar Daniels", Animal.Type.DOG, Animal.Sex.F, 4, 13, 6, false),
+                    new Animal(
+                        "Sheriff Dodson Alldredge", Animal.Type.FISH, Animal.Sex.F, 27, 35, 40, true),
+                    new Animal(
+                        "Cooper", Animal.Type.CAT, Animal.Sex.F, 2, 17, 44, true),
+                    new Animal(
+                        "Osborne Dowman", Animal.Type.SPIDER, Animal.Sex.F, 26, 34, 64, true),
+                    new Animal(
+                        "Wild", Animal.Type.DOG, Animal.Sex.F, 8, 61, 97, true),
+                    new Animal(
+                        "Jordan Eddington Arana", Animal.Type.DOG, Animal.Sex.F, 26, 69, 56, true),
+                    new Animal(
+                        "Luke Fane", Animal.Type.DOG, Animal.Sex.M, 18, 24, 3, true),
+                    new Animal(
+                        "Hobbit Flannagan Aron", Animal.Type.FISH, Animal.Sex.F, 8, 16, 18, true),
+                    new Animal(
+                        "Carlin Gardner Arredondo Appleton", Animal.Type.SPIDER, Animal.Sex.M, 5, 7, 72, true),
+                    new Animal(
+                        "Hank", Animal.Type.CAT, Animal.Sex.F, 24, 16, 2, true)
+                )),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Nolan Hamphrey Ardis", Animal.Type.FISH, Animal.Sex.F, 17, 8, 58, true),
+                    new Animal(
+                        "Carlin", Animal.Type.FISH, Animal.Sex.F, 24, 59, 10, true),
+                    new Animal(
+                        "Raygun Hamphrey Ancheta", Animal.Type.BIRD, Animal.Sex.M, 12, 64, 4, false),
+                    new Animal(
+                        "Wild Hardman", Animal.Type.FISH, Animal.Sex.M, 28, 54, 58, false),
+                    new Animal(
+                        "Percy Gerald", Animal.Type.BIRD, Animal.Sex.F, 20, 37, 17, false),
+                    new Animal(
+                        "Reiner", Animal.Type.CAT, Animal.Sex.F, 12, 41, 35, true),
+                    new Animal(
+                        "Crystall Fulton", Animal.Type.CAT, Animal.Sex.F, 23, 52, 57, true),
+                    new Animal(
+                        "Sherlock Flannagan Ammons", Animal.Type.BIRD, Animal.Sex.M, 22, 26, 33, true),
+                    new Animal(
+                        "Hank", Animal.Type.BIRD, Animal.Sex.M, 13, 10, 90, false),
+                    new Animal(
+                        "Wild Farmer", Animal.Type.SPIDER, Animal.Sex.F, 20, 34, 71, false),
+                    new Animal(
+                        "Sheriff", Animal.Type.DOG, Animal.Sex.M, 19, 30, 27, false),
+                    new Animal(
+                        "Chase Elmers", Animal.Type.SPIDER, Animal.Sex.M, 0, 5, 70, false),
+                    new Animal(
+                        "Stream", Animal.Type.BIRD, Animal.Sex.F, 26, 6, 2, true),
+                    new Animal(
+                        "Spike", Animal.Type.BIRD, Animal.Sex.F, 16, 16, 98, false),
+                    new Animal(
+                        "Hobbit", Animal.Type.DOG, Animal.Sex.M, 28, 47, 54, false),
+                    new Animal(
+                        "Swen Donaldson Ashburn", Animal.Type.SPIDER, Animal.Sex.F, 7, 65, 21, true),
+                    new Animal(
+                        "Shakespeare Derrick", Animal.Type.FISH, Animal.Sex.M, 3, 36, 80, false)
+                )),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Swen", Animal.Type.FISH, Animal.Sex.F, 4, 18, 16, true),
+                    new Animal(
+                        "Mars Croftoon Artz", Animal.Type.CAT, Animal.Sex.M, 13, 34, 30, false),
+                    new Animal(
+                        "Magic Cook", Animal.Type.BIRD, Animal.Sex.F, 19, 8, 44, false),
+                    new Animal(
+                        "Nolan", Animal.Type.FISH, Animal.Sex.F, 2, 64, 85, true),
+                    new Animal(
+                        "Doyle Clapton Ammerman", Animal.Type.DOG, Animal.Sex.F, 18, 20, 43, false),
+                    new Animal(
+                        "Percy", Animal.Type.SPIDER, Animal.Sex.F, 16, 55, 75, false),
+                    new Animal(
+                        "Joker Carroll", Animal.Type.FISH, Animal.Sex.M, 21, 24, 66, false),
+                    new Animal(
+                        "Sheriff Bush Arellano", Animal.Type.FISH, Animal.Sex.F, 16, 3, 86, false),
+                    new Animal(
+                        "Admiral", Animal.Type.CAT, Animal.Sex.F, 23, 2, 83, false),
+                    new Animal(
+                        "Jordan Bootman Asher", Animal.Type.CAT, Animal.Sex.F, 24, 46, 76, false),
+                    new Animal(
+                        "June", Animal.Type.BIRD, Animal.Sex.F, 27, 45, 69, false)
+                )),
+        };
+
+    }
+
+    static Arguments[] animalListsWithNamesLongerThanTwoWords() {
+        return new Arguments[] {
+            Arguments.of(
+                Arrays.asList()
+            ),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Osborne Austin Abdullah", Animal.Type.DOG, Animal.Sex.M, 26, 7, 17, true),
+                    new Animal(
+                        "Benedict Bawerman Abeyta", Animal.Type.CAT, Animal.Sex.F, 0, 69, 86, false),
+                    new Animal(
+                        "Jay Carter Ahearn", Animal.Type.CAT, Animal.Sex.F, 24, 47, 83, true),
+                    new Animal(
+                        "Stream Charlson Alicea", Animal.Type.CAT, Animal.Sex.M, 25, 19, 73, true)
+                )),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Sheriff Dodson Alldredge", Animal.Type.FISH, Animal.Sex.F, 27, 35, 40, true),
+                    new Animal(
+                        "Jordan Eddington Arana", Animal.Type.DOG, Animal.Sex.F, 26, 69, 56, true),
+                    new Animal(
+                        "Hobbit Flannagan Aron", Animal.Type.FISH, Animal.Sex.F, 8, 16, 18, true),
+                    new Animal(
+                        "Carlin Gardner Arredondo Appleton", Animal.Type.SPIDER, Animal.Sex.M, 5, 7, 72, true)
+                )),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Nolan Hamphrey Ardis", Animal.Type.FISH, Animal.Sex.F, 17, 8, 58, true),
+                    new Animal(
+                        "Raygun Hamphrey Ancheta", Animal.Type.BIRD, Animal.Sex.M, 12, 64, 4, false),
+                    new Animal(
+                        "Sherlock Flannagan Ammons", Animal.Type.BIRD, Animal.Sex.M, 22, 26, 33, true),
+                    new Animal(
+                        "Swen Donaldson Ashburn", Animal.Type.SPIDER, Animal.Sex.F, 7, 65, 21, true)
+                    )),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Mars Croftoon Artz", Animal.Type.CAT, Animal.Sex.M, 13, 34, 30, false),
+                    new Animal(
+                        "Doyle Clapton Ammerman", Animal.Type.DOG, Animal.Sex.F, 18, 20, 43, false),
+                    new Animal(
+                        "Sheriff Bush Arellano", Animal.Type.FISH, Animal.Sex.F, 16, 3, 86, false),
+                    new Animal(
+                        "Jordan Bootman Asher", Animal.Type.CAT, Animal.Sex.F, 24, 46, 76, false)
+                )),
+        };
+
+    }
 }
