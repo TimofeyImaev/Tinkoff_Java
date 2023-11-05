@@ -13,8 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
+@SuppressWarnings("CyclomaticComplexity")
 public class Labyrinth {
-    private static final ArrayList<Pair<Integer, Integer>> neighboursOfCeil = new ArrayList<>(List.of(
+    private static final ArrayList<Pair<Integer, Integer>> NEIGHBOURS_OF_CEIL = new ArrayList<>(List.of(
         new Pair<>(1, 0),
         new Pair<>(-1, 0),
         new Pair<>(0, -1),
@@ -25,6 +26,8 @@ public class Labyrinth {
     private final String blueCeil = "<font color = \"blue\">▉▉<>";
     private final String greenCeil = "<font color = \"green\">▉▉<>";
     private final String redCeil = "<font color = \"red\">▉▉<>";
+    private final static int SEVENTY = 70;
+    private final static int SEVEN_HUNDRED = 700;
 
     String[][] labyrinth;
     JFrame frame;
@@ -35,8 +38,8 @@ public class Labyrinth {
     }
 
     public Labyrinth(int sideOfLabyrinth) {
-        sideOfLabyrinth = sideOfLabyrinth * 2 + 1;
-        this.labyrinth = new String[sideOfLabyrinth][sideOfLabyrinth];
+        int newSideOfLabyrinth = sideOfLabyrinth * 2 + 1;
+        this.labyrinth = new String[newSideOfLabyrinth][newSideOfLabyrinth];
     }
 
     public Labyrinth(String[][] preparedLabyrinth) {
@@ -44,15 +47,15 @@ public class Labyrinth {
     }
 
     private void dfsPathBreaker(
-        Integer x, Integer y,
-        boolean used[][]
+            Integer x, Integer y,
+            boolean[][] used
     ) {
         used[x][y] = true;
         labyrinth[x][y] = orangeCeil;
         //writeLabyrinth();
 
-        Collections.shuffle(neighboursOfCeil);
-        for (var shift : neighboursOfCeil) {
+        Collections.shuffle(NEIGHBOURS_OF_CEIL);
+        for (var shift : NEIGHBOURS_OF_CEIL) {
             Integer neighbourX = x + shift.first * 2;
             Integer neighbourY = y + shift.second * 2;
 
@@ -73,23 +76,23 @@ public class Labyrinth {
             }
         }
 
-        boolean used[][] = new boolean[labyrinth.length][labyrinth.length];
+        boolean[][] used = new boolean[labyrinth.length][labyrinth.length];
 
         dfsPathBreaker(1, 1, used);
     }
 
     private boolean dfsPathSearcher(
-        Integer x1, Integer y1,
-        Integer x2, Integer y2,
-        boolean used[][],
-        ArrayList<Pair<Integer, Integer>> path,
-        boolean isNeedToPrintPath
+            Integer x1, Integer y1,
+            Integer x2, Integer y2,
+            boolean[][] used,
+            ArrayList<Pair<Integer, Integer>> path,
+            boolean isNeedToPrintPath
     ) throws InterruptedException, IOException {
         if (isNeedToPrintPath) {
             labyrinth[x1][y1] = blueCeil;
             writeLabyrinth();
 
-            TimeUnit.MILLISECONDS.sleep(70);
+            TimeUnit.MILLISECONDS.sleep(SEVENTY);
         }
         used[x1][y1] = true;
         //writeLabyrinth();
@@ -101,13 +104,13 @@ public class Labyrinth {
                 labyrinth[x1][y1] = greenCeil;
                 writeLabyrinth();
 
-                TimeUnit.MILLISECONDS.sleep(70);
+                TimeUnit.MILLISECONDS.sleep(SEVENTY);
             }
 
             return true;
         }
 
-        for (var shift : neighboursOfCeil) {
+        for (var shift : NEIGHBOURS_OF_CEIL) {
             Integer neighbourX = x1 + shift.first;
             Integer neighbourY = y1 + shift.second;
 
@@ -127,12 +130,10 @@ public class Labyrinth {
                         labyrinth[x1][y1] = greenCeil;
                         writeLabyrinth();
 
-                        TimeUnit.MILLISECONDS.sleep(70);
+                        TimeUnit.MILLISECONDS.sleep(SEVENTY);
                     }
 
                     return true;
-                } else {
-
                 }
             }
         }
@@ -141,7 +142,7 @@ public class Labyrinth {
             labyrinth[x1][y1] = redCeil;
             writeLabyrinth();
 
-            TimeUnit.MILLISECONDS.sleep(70);
+            TimeUnit.MILLISECONDS.sleep(SEVENTY);
         }
 
         return false;
@@ -166,18 +167,18 @@ public class Labyrinth {
         frame = new JFrame("DfsDemonstration");
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(700, 700);
+        frame.setSize(SEVEN_HUNDRED, SEVEN_HUNDRED);
 
         labels = new JLabel[labyrinth.length];
         for (int i = 0; i < labyrinth.length; ++i) {
-            labels[i] = new JLabel("flag");
+            labels[i] = new JLabel("flag1");
             frame.add(labels[i], BorderLayout.NORTH);
         }
 
         frame.setLayout(new FlowLayout(FlowLayout.LEFT));
         frame.setVisible(true);
 
-        boolean used[][] = new boolean[labyrinth.length][labyrinth.length];
+        boolean[][] used = new boolean[labyrinth.length][labyrinth.length];
         ArrayList<Pair<Integer, Integer>> path = new ArrayList<>();
 
         dfsPathSearcher(x1, y1, x2, y2, used, path, isNeedToPrintPath);
@@ -203,22 +204,22 @@ public class Labyrinth {
         }
 
         labyrinth[x2][y2] = greenCeil;
-        frame = new JFrame("DfsDemonstration");
+        frame = new JFrame("BfsDemonstration");
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(700, 700);
+        frame.setSize(SEVEN_HUNDRED, SEVEN_HUNDRED);
 
         labels = new JLabel[labyrinth.length];
         for (int i = 0; i < labyrinth.length; ++i) {
-            labels[i] = new JLabel("flag");
+            labels[i] = new JLabel("flag2");
             frame.add(labels[i], BorderLayout.NORTH);
         }
 
         frame.setLayout(new FlowLayout(FlowLayout.LEFT));
         frame.setVisible(true);
 
-        boolean used[][] = new boolean[labyrinth.length][labyrinth.length];
-        Pair<Integer, Integer> parent[][] = new Pair[labyrinth.length][labyrinth.length];
+        boolean[][] used = new boolean[labyrinth.length][labyrinth.length];
+        Pair<Integer, Integer>[][] parent = new Pair[labyrinth.length][labyrinth.length];
         ArrayList<Pair<Integer, Integer>> path = new ArrayList<>();
 
         LinkedList<Pair<Integer, Integer>> queue = new LinkedList<>();
@@ -233,7 +234,7 @@ public class Labyrinth {
                 labyrinth[vertex.first][vertex.second] = blueCeil;
                 writeLabyrinth();
 
-                TimeUnit.MILLISECONDS.sleep(70);
+                TimeUnit.MILLISECONDS.sleep(SEVENTY);
             }
 
             if (vertex.first.equals(x2) && vertex.second.equals(y2)) {
@@ -242,7 +243,7 @@ public class Labyrinth {
                         labyrinth[vertex.first][vertex.second] = greenCeil;
                         writeLabyrinth();
 
-                        TimeUnit.MILLISECONDS.sleep(70);
+                        TimeUnit.MILLISECONDS.sleep(SEVENTY);
 
                         vertex = parent[vertex.first][vertex.second];
                     }
@@ -250,14 +251,14 @@ public class Labyrinth {
                     labyrinth[vertex.first][vertex.second] = greenCeil;
                     writeLabyrinth();
 
-                    TimeUnit.MILLISECONDS.sleep(70);
+                    TimeUnit.MILLISECONDS.sleep(SEVENTY);
                 }
             }
 
             if (!used[vertex.first][vertex.second]) {
                 used[vertex.first][vertex.second] = true;
 
-                for (var each : neighboursOfCeil) {
+                for (var each : NEIGHBOURS_OF_CEIL) {
                     Integer neighbourX = vertex.first + each.first;
                     Integer neighbourY = vertex.second + each.second;
 
