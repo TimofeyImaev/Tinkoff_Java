@@ -41,6 +41,78 @@ public class Task5 {
 
         LOGGER.trace("Sorted array: {}", namesList);
 
-        return namesList.toArray();
+        return namesList.stream().map(
+            name -> {
+                Contact newContact = new Contact();
+
+                newContact.parseStringToNames(name);
+
+                return newContact;
+            }
+        ).toArray();
+    }
+
+    public static class Contact {
+        private String firstName;
+        private String secondName;
+
+        public Contact() {
+            this.firstName = "";
+            this.secondName = "";
+        }
+
+        public Contact(String firstName) {
+            this.firstName = firstName;
+            this.secondName = "";
+        }
+
+        public Contact(String firstName, String secondName) {
+            this.firstName = firstName;
+            this.secondName = secondName;
+        }
+
+        String getFirstName() {
+            return firstName;
+        }
+
+        String getSecondName() {
+            return secondName;
+        }
+
+        public boolean equals(Object otherContact) {
+            if (!this.getClass().equals(otherContact.getClass())) {
+                return false;
+            }
+
+            if (this.secondName == null ^ ((Contact) otherContact).secondName == null) {
+                return false;
+            }
+
+            if (this == otherContact) {
+                return true;
+            }
+
+            return ((Contact) otherContact).firstName.equals(this.firstName)
+                && ((Contact) otherContact).secondName.equals(this.secondName);
+        }
+
+        public int hashCode() {
+            return 1;
+        }
+
+        public String toString() {
+            return this.firstName + this.secondName;
+        }
+
+        void parseStringToNames(String toParse) {
+            String[] names = toParse.split(" ");
+
+            if (names.length >= 1) {
+                this.firstName = names[0];
+            }
+            if (names.length >= 2) {
+                this.secondName = names[1];
+            }
+        }
     }
 }

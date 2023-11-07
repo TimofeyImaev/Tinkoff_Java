@@ -1,25 +1,21 @@
 package edu.hw3;
 
-import java.util.TreeMap;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.HashMap;
 
 public class Task3 {
-    private static final Logger LOGGER = LogManager.getLogger();
 
     private Task3() {
 
     }
 
-    public static TreeMap<Object, Integer> freqDict(Object[] objectList) {
-        TreeMap<Object, Integer> alphabeticFrequencyDict = new TreeMap<>();
+    public static HashMap<Object, Integer> freqDict(Object[] objectList) {
+        HashMap<Object, Integer> alphabeticFrequencyDict = new HashMap<>();
 
         for (var each : objectList) {
-            if (alphabeticFrequencyDict.containsKey(each)) {
-                alphabeticFrequencyDict.put(each, alphabeticFrequencyDict.get(each) + 1);
-            } else {
-                alphabeticFrequencyDict.put(each, 1);
-            }
+            alphabeticFrequencyDict.put(
+                each,
+                alphabeticFrequencyDict.getOrDefault(each, 1)
+            );
         }
 
         return alphabeticFrequencyDict;
