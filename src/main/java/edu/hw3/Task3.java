@@ -1,6 +1,6 @@
 package edu.hw3;
 
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class Task3 {
 
@@ -8,13 +8,13 @@ public class Task3 {
 
     }
 
-    public static HashMap<Object, Integer> freqDict(Object[] objectList) {
-        HashMap<Object, Integer> alphabeticFrequencyDict = new HashMap<>();
+    public static TreeMap<Object, Integer> freqDict(Object[] objectList) {
+        TreeMap<Object, Integer> alphabeticFrequencyDict = new TreeMap<>();
 
         for (var each : objectList) {
             alphabeticFrequencyDict.put(
                 each,
-                alphabeticFrequencyDict.getOrDefault(each, 1)
+                alphabeticFrequencyDict.getOrDefault(each, 0) + 1
             );
         }
 
