@@ -79,8 +79,9 @@ public class Task5 {
             return secondName;
         }
 
+        @Override
         public boolean equals(Object otherContact) {
-            if (!this.getClass().equals(otherContact.getClass())) {
+            if (otherContact == null || !this.getClass().equals(otherContact.getClass())) {
                 return false;
             }
 
@@ -96,10 +97,12 @@ public class Task5 {
                 && ((Contact) otherContact).secondName.equals(this.secondName);
         }
 
+        @Override
         public int hashCode() {
-            return 1;
+            return firstName.hashCode();
         }
 
+        @Override
         public String toString() {
             return this.firstName + this.secondName;
         }
