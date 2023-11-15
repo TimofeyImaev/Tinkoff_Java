@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import org.junit.jupiter.params.provider.Arguments;
 import static java.util.Map.entry;
 
@@ -116,6 +117,119 @@ public class AnimalLists {
                         "Jordan", Animal.Type.CAT, Animal.Sex.F, 24, 46, 76, false),
                     new Animal(
                         "June", Animal.Type.BIRD, Animal.Sex.F, 27, 45, 69, false)
+                )),
+        };
+
+    }
+
+    static Arguments[] animalWithHighHeightLists() {
+        return new Arguments[] {
+            Arguments.of(
+                Arrays.asList()
+            ),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Osborne", Animal.Type.DOG, Animal.Sex.M, 26, 70, 17, true),
+                    new Animal(
+                        "Benedict", Animal.Type.CAT, Animal.Sex.F, 0, 690, 86, false),
+                    new Animal(
+                        "Nolan", Animal.Type.SPIDER, Animal.Sex.F, 15, 340, 48, false),
+                    new Animal(
+                        "Carlin", Animal.Type.BIRD, Animal.Sex.F, 19, 200, 48, true),
+                    new Animal(
+                        "Jay", Animal.Type.CAT, Animal.Sex.F, 24, 470, 83, true),
+                    new Animal(
+                        "Admiral", Animal.Type.BIRD, Animal.Sex.F, 5, 40, 35, false),
+                    new Animal(
+                        "Fall", Animal.Type.DOG, Animal.Sex.M, 6, 490, 27, false),
+                    new Animal(
+                        "Stream", Animal.Type.CAT, Animal.Sex.M, 25, 190, 73, true)
+                )),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Caesar", Animal.Type.DOG, Animal.Sex.F, 4, 130, 6, false),
+                    new Animal(
+                        "Sheriff", Animal.Type.FISH, Animal.Sex.F, 27, 350, 40, true),
+                    new Animal(
+                        "Cooper", Animal.Type.CAT, Animal.Sex.F, 2, 170, 44, true),
+                    new Animal(
+                        "Osborne", Animal.Type.SPIDER, Animal.Sex.F, 26, 340, 64, true),
+                    new Animal(
+                        "Wild", Animal.Type.DOG, Animal.Sex.F, 8, 610, 97, true),
+                    new Animal(
+                        "Jordan", Animal.Type.DOG, Animal.Sex.F, 26, 690, 56, true),
+                    new Animal(
+                        "Luke", Animal.Type.DOG, Animal.Sex.M, 18, 240, 3, true),
+                    new Animal(
+                        "Hobbit", Animal.Type.FISH, Animal.Sex.F, 8, 160, 18, true),
+                    new Animal(
+                        "Carlin", Animal.Type.SPIDER, Animal.Sex.M, 5, 70, 72, true),
+                    new Animal(
+                        "Hank", Animal.Type.CAT, Animal.Sex.F, 24, 160, 2, true)
+                )),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Nolan", Animal.Type.FISH, Animal.Sex.F, 17, 80, 58, true),
+                    new Animal(
+                        "Carlin", Animal.Type.FISH, Animal.Sex.F, 24, 590, 10, true),
+                    new Animal(
+                        "Raygun", Animal.Type.BIRD, Animal.Sex.M, 12, 640, 4, false),
+                    new Animal(
+                        "Wild", Animal.Type.FISH, Animal.Sex.M, 28, 540, 58, false),
+                    new Animal(
+                        "Percy", Animal.Type.BIRD, Animal.Sex.F, 20, 370, 17, false),
+                    new Animal(
+                        "Reiner", Animal.Type.CAT, Animal.Sex.F, 12, 410, 35, true),
+                    new Animal(
+                        "Crystall", Animal.Type.CAT, Animal.Sex.F, 23, 520, 57, true),
+                    new Animal(
+                        "Sherlock", Animal.Type.BIRD, Animal.Sex.M, 22, 260, 33, true),
+                    new Animal(
+                        "Hank", Animal.Type.BIRD, Animal.Sex.M, 13, 100, 90, false),
+                    new Animal(
+                        "Wild", Animal.Type.SPIDER, Animal.Sex.F, 20, 340, 71, false),
+                    new Animal(
+                        "Sheriff", Animal.Type.DOG, Animal.Sex.M, 19, 300, 27, false),
+                    new Animal(
+                        "Chase", Animal.Type.SPIDER, Animal.Sex.M, 0, 50, 70, false),
+                    new Animal(
+                        "Stream", Animal.Type.BIRD, Animal.Sex.F, 26, 60, 2, true),
+                    new Animal(
+                        "Spike", Animal.Type.BIRD, Animal.Sex.F, 16, 160, 98, false),
+                    new Animal(
+                        "Hobbit", Animal.Type.DOG, Animal.Sex.M, 28, 470, 54, false),
+                    new Animal(
+                        "Swen", Animal.Type.SPIDER, Animal.Sex.F, 7, 650, 21, true),
+                    new Animal(
+                        "Shakespeare", Animal.Type.FISH, Animal.Sex.M, 3, 360, 80, false)
+                )),
+            Arguments.of(
+                Arrays.asList(
+                    new Animal(
+                        "Swen", Animal.Type.FISH, Animal.Sex.F, 4, 180, 16, true),
+                    new Animal(
+                        "Mars", Animal.Type.CAT, Animal.Sex.M, 13, 340, 30, false),
+                    new Animal(
+                        "Magic", Animal.Type.BIRD, Animal.Sex.F, 19, 80, 44, false),
+                    new Animal(
+                        "Nolan", Animal.Type.FISH, Animal.Sex.F, 2, 640, 85, true),
+                    new Animal(
+                        "Doyle", Animal.Type.DOG, Animal.Sex.F, 18, 200, 43, false),
+                    new Animal(
+                        "Percy", Animal.Type.SPIDER, Animal.Sex.F, 16, 550, 75, false),
+                    new Animal(
+                        "Joker", Animal.Type.FISH, Animal.Sex.M, 21, 240, 66, false),
+                    new Animal(
+                        "Sheriff", Animal.Type.FISH, Animal.Sex.F, 16, 30, 86, false),
+                    new Animal(
+                        "Admiral", Animal.Type.CAT, Animal.Sex.F, 23, 20, 83, false),
+                    new Animal(
+                        "Jordan", Animal.Type.CAT, Animal.Sex.F, 24, 460, 76, false),
+                    new Animal(
+                        "June", Animal.Type.BIRD, Animal.Sex.F, 27, 450, 69, false)
                 )),
         };
 
@@ -549,33 +663,23 @@ public class AnimalLists {
 
             )),
             Arguments.of(List.<Animal>of(
-
-            )),
-            Arguments.of(List.<Animal>of(
                 new Animal(
-                    "Caesar", Animal.Type.DOG, Animal.Sex.F, 4, 13, 6, false)
-            )),
-            Arguments.of(List.<Animal>of(
-
-            )),
-            Arguments.of(List.<Animal>of(
-
-            )),
-        };
-    }
-
-    static Arguments[] listOfAnimalsWhichBitesAndHeightMoreTen() {
-        return new Arguments[] {
-            Arguments.of(List.<Animal>of(
-
-            )),
-            Arguments.of(List.<Animal>of(
+                    "Osborne", Animal.Type.DOG, Animal.Sex.M, 26, 7, 17, true),
+                new Animal(
+                    "Benedict", Animal.Type.CAT, Animal.Sex.F, 0, 69, 86, false),
+                new Animal(
+                    "Nolan", Animal.Type.SPIDER, Animal.Sex.F, 15, 34, 48, false),
                 new Animal(
                     "Carlin", Animal.Type.BIRD, Animal.Sex.F, 19, 20, 48, true),
                 new Animal(
                     "Jay", Animal.Type.CAT, Animal.Sex.F, 24, 47, 83, true),
                 new Animal(
+                    "Admiral", Animal.Type.BIRD, Animal.Sex.F, 5, 4, 35, false),
+                new Animal(
+                    "Fall", Animal.Type.DOG, Animal.Sex.M, 6, 49, 27, false),
+                new Animal(
                     "Stream", Animal.Type.CAT, Animal.Sex.M, 25, 19, 73, true)
+
             )),
             Arguments.of(List.<Animal>of(
                 new Animal(
@@ -593,11 +697,21 @@ public class AnimalLists {
                 new Animal(
                     "Hobbit", Animal.Type.FISH, Animal.Sex.F, 8, 16, 18, true),
                 new Animal(
+                    "Carlin", Animal.Type.SPIDER, Animal.Sex.M, 5, 7, 72, true),
+                new Animal(
                     "Hank", Animal.Type.CAT, Animal.Sex.F, 24, 16, 2, true)
             )),
             Arguments.of(List.<Animal>of(
                 new Animal(
+                    "Nolan", Animal.Type.FISH, Animal.Sex.F, 17, 8, 58, true),
+                new Animal(
                     "Carlin", Animal.Type.FISH, Animal.Sex.F, 24, 59, 10, true),
+                new Animal(
+                    "Raygun", Animal.Type.BIRD, Animal.Sex.M, 12, 64, 4, false),
+                new Animal(
+                    "Wild", Animal.Type.FISH, Animal.Sex.M, 28, 54, 58, false),
+                new Animal(
+                    "Percy", Animal.Type.BIRD, Animal.Sex.F, 20, 37, 17, false),
                 new Animal(
                     "Reiner", Animal.Type.CAT, Animal.Sex.F, 12, 41, 35, true),
                 new Animal(
@@ -605,13 +719,101 @@ public class AnimalLists {
                 new Animal(
                     "Sherlock", Animal.Type.BIRD, Animal.Sex.M, 22, 26, 33, true),
                 new Animal(
-                    "Swen", Animal.Type.SPIDER, Animal.Sex.F, 7, 65, 21, true)
+                    "Hank", Animal.Type.BIRD, Animal.Sex.M, 13, 10, 90, false),
+                new Animal(
+                    "Wild", Animal.Type.SPIDER, Animal.Sex.F, 20, 34, 71, false),
+                new Animal(
+                    "Sheriff", Animal.Type.DOG, Animal.Sex.M, 19, 30, 27, false),
+                new Animal(
+                    "Chase", Animal.Type.SPIDER, Animal.Sex.M, 0, 5, 70, false),
+                new Animal(
+                    "Stream", Animal.Type.BIRD, Animal.Sex.F, 26, 6, 2, true),
+                new Animal(
+                    "Spike", Animal.Type.BIRD, Animal.Sex.F, 16, 16, 98, false),
+                new Animal(
+                    "Hobbit", Animal.Type.DOG, Animal.Sex.M, 28, 47, 54, false),
+                new Animal(
+                    "Swen", Animal.Type.SPIDER, Animal.Sex.F, 7, 65, 21, true),
+                new Animal(
+                    "Shakespeare", Animal.Type.FISH, Animal.Sex.M, 3, 36, 80, false)
+
             )),
             Arguments.of(List.<Animal>of(
                 new Animal(
                     "Swen", Animal.Type.FISH, Animal.Sex.F, 4, 18, 16, true),
                 new Animal(
-                    "Nolan", Animal.Type.FISH, Animal.Sex.F, 2, 64, 85, true)
+                    "Mars", Animal.Type.CAT, Animal.Sex.M, 13, 34, 30, false),
+                new Animal(
+                    "Magic", Animal.Type.BIRD, Animal.Sex.F, 19, 8, 44, false),
+                new Animal(
+                    "Nolan", Animal.Type.FISH, Animal.Sex.F, 2, 64, 85, true),
+                new Animal(
+                    "Doyle", Animal.Type.DOG, Animal.Sex.F, 18, 20, 43, false),
+                new Animal(
+                    "Percy", Animal.Type.SPIDER, Animal.Sex.F, 16, 55, 75, false),
+                new Animal(
+                    "Joker", Animal.Type.FISH, Animal.Sex.M, 21, 24, 66, false),
+                new Animal(
+                    "Sheriff", Animal.Type.FISH, Animal.Sex.F, 16, 3, 86, false),
+                new Animal(
+                    "Admiral", Animal.Type.CAT, Animal.Sex.F, 23, 2, 83, false),
+                new Animal(
+                    "Jordan", Animal.Type.CAT, Animal.Sex.F, 24, 46, 76, false),
+                new Animal(
+                    "June", Animal.Type.BIRD, Animal.Sex.F, 27, 45, 69, false)
+
+            )),
+        };
+    }
+
+    static Arguments[] listOfAnimalsWhichBitesAndHeightMoreTen() {
+        return new Arguments[] {
+            Arguments.of(List.<Animal>of(
+
+            )),
+            Arguments.of(List.<Animal>of(
+                new Animal(
+                    "Carlin", Animal.Type.BIRD, Animal.Sex.F, 19, 200, 48, true),
+                new Animal(
+                    "Jay", Animal.Type.CAT, Animal.Sex.F, 24, 470, 83, true),
+                new Animal(
+                    "Stream", Animal.Type.CAT, Animal.Sex.M, 25, 190, 73, true)
+            )),
+            Arguments.of(List.<Animal>of(
+                new Animal(
+                    "Sheriff", Animal.Type.FISH, Animal.Sex.F, 27, 350, 40, true),
+                new Animal(
+                    "Cooper", Animal.Type.CAT, Animal.Sex.F, 2, 170, 44, true),
+                new Animal(
+                    "Osborne", Animal.Type.SPIDER, Animal.Sex.F, 26, 340, 64, true),
+                new Animal(
+                    "Wild", Animal.Type.DOG, Animal.Sex.F, 8, 610, 97, true),
+                new Animal(
+                    "Jordan", Animal.Type.DOG, Animal.Sex.F, 26, 690, 56, true),
+                new Animal(
+                    "Luke", Animal.Type.DOG, Animal.Sex.M, 18, 240, 3, true),
+                new Animal(
+                    "Hobbit", Animal.Type.FISH, Animal.Sex.F, 8, 160, 18, true),
+                new Animal(
+                    "Hank", Animal.Type.CAT, Animal.Sex.F, 24, 160, 2, true)
+            )),
+            Arguments.of(List.<Animal>of(
+                new Animal(
+                    "Carlin", Animal.Type.FISH, Animal.Sex.F, 24, 590, 10, true),
+                new Animal(
+                    "Reiner", Animal.Type.CAT, Animal.Sex.F, 12, 410, 35, true),
+                new Animal(
+                    "Crystall", Animal.Type.CAT, Animal.Sex.F, 23, 520, 57, true),
+                new Animal(
+                    "Sherlock", Animal.Type.BIRD, Animal.Sex.M, 22, 260, 33, true),
+                new Animal(
+                    "Swen", Animal.Type.SPIDER, Animal.Sex.F, 7, 650, 21, true)
+            )),
+            Arguments.of(List.<Animal>of(
+                new Animal(
+                    "Swen", Animal.Type.FISH, Animal.Sex.F, 4, 180, 16, true),
+                new Animal(
+                    "Nolan", Animal.Type.FISH, Animal.Sex.F, 2, 640, 85, true)
             )),
         };
     }
@@ -998,6 +1200,8 @@ public class AnimalLists {
                     new Animal(
                         "Fall", Animal.Type.DOG, Animal.Sex.M, 6, 49, 27, false),
                     new Animal(
+                        "  Molly      ", Animal.Type.DOG, Animal.Sex.M, 6, 49, 27, false),
+                    new Animal(
                         "Stream Charlson Alicea", Animal.Type.CAT, Animal.Sex.M, 25, 19, 73, true)
                 )),
             Arguments.of(
@@ -1009,6 +1213,8 @@ public class AnimalLists {
                     new Animal(
                         "Cooper", Animal.Type.CAT, Animal.Sex.F, 2, 17, 44, true),
                     new Animal(
+                        "Shonny   Cooper   ", Animal.Type.CAT, Animal.Sex.F, 2, 17, 44, true),
+                    new Animal(
                         "Osborne Dowman", Animal.Type.SPIDER, Animal.Sex.F, 26, 34, 64, true),
                     new Animal(
                         "Wild", Animal.Type.DOG, Animal.Sex.F, 8, 61, 97, true),
@@ -1016,6 +1222,8 @@ public class AnimalLists {
                         "Jordan Eddington Arana", Animal.Type.DOG, Animal.Sex.F, 26, 69, 56, true),
                     new Animal(
                         "Luke Fane", Animal.Type.DOG, Animal.Sex.M, 18, 24, 3, true),
+                    new Animal(
+                        "   Dummy  Done", Animal.Type.DOG, Animal.Sex.M, 18, 24, 3, true),
                     new Animal(
                         "Hobbit Flannagan Aron", Animal.Type.FISH, Animal.Sex.F, 8, 16, 18, true),
                     new Animal(
@@ -1038,6 +1246,8 @@ public class AnimalLists {
                     new Animal(
                         "Reiner", Animal.Type.CAT, Animal.Sex.F, 12, 41, 35, true),
                     new Animal(
+                        "   Reiner", Animal.Type.CAT, Animal.Sex.F, 12, 41, 35, true),
+                    new Animal(
                         "Crystall Fulton", Animal.Type.CAT, Animal.Sex.F, 23, 52, 57, true),
                     new Animal(
                         "Sherlock Flannagan Ammons", Animal.Type.BIRD, Animal.Sex.M, 22, 26, 33, true),
@@ -1054,6 +1264,8 @@ public class AnimalLists {
                     new Animal(
                         "Spike", Animal.Type.BIRD, Animal.Sex.F, 16, 16, 98, false),
                     new Animal(
+                        " Spike ", Animal.Type.BIRD, Animal.Sex.F, 16, 16, 98, false),
+                    new Animal(
                         "Hobbit", Animal.Type.DOG, Animal.Sex.M, 28, 47, 54, false),
                     new Animal(
                         "Swen Donaldson Ashburn", Animal.Type.SPIDER, Animal.Sex.F, 7, 65, 21, true),
@@ -1065,23 +1277,23 @@ public class AnimalLists {
                     new Animal(
                         "Swen", Animal.Type.FISH, Animal.Sex.F, 4, 18, 16, true),
                     new Animal(
-                        "Mars Croftoon Artz", Animal.Type.CAT, Animal.Sex.M, 13, 34, 30, false),
+                        "Mars   Croftoon Artz", Animal.Type.CAT, Animal.Sex.M, 13, 34, 30, false),
                     new Animal(
                         "Magic Cook", Animal.Type.BIRD, Animal.Sex.F, 19, 8, 44, false),
                     new Animal(
                         "Nolan", Animal.Type.FISH, Animal.Sex.F, 2, 64, 85, true),
                     new Animal(
-                        "Doyle Clapton Ammerman", Animal.Type.DOG, Animal.Sex.F, 18, 20, 43, false),
+                        "Doyle Clapton   Ammerman", Animal.Type.DOG, Animal.Sex.F, 18, 20, 43, false),
                     new Animal(
                         "Percy", Animal.Type.SPIDER, Animal.Sex.F, 16, 55, 75, false),
                     new Animal(
-                        "Joker Carroll", Animal.Type.FISH, Animal.Sex.M, 21, 24, 66, false),
+                        "Joker  Carroll", Animal.Type.FISH, Animal.Sex.M, 21, 24, 66, false),
                     new Animal(
-                        "Sheriff Bush Arellano", Animal.Type.FISH, Animal.Sex.F, 16, 3, 86, false),
+                        "Sheriff  Bush Arellano", Animal.Type.FISH, Animal.Sex.F, 16, 3, 86, false),
                     new Animal(
                         "Admiral", Animal.Type.CAT, Animal.Sex.F, 23, 2, 83, false),
                     new Animal(
-                        "Jordan Bootman Asher", Animal.Type.CAT, Animal.Sex.F, 24, 46, 76, false),
+                        "Jordan Bootman    Asher", Animal.Type.CAT, Animal.Sex.F, 24, 46, 76, false),
                     new Animal(
                         "June", Animal.Type.BIRD, Animal.Sex.F, 27, 45, 69, false)
                 )),
@@ -1126,19 +1338,99 @@ public class AnimalLists {
                         "Sherlock Flannagan Ammons", Animal.Type.BIRD, Animal.Sex.M, 22, 26, 33, true),
                     new Animal(
                         "Swen Donaldson Ashburn", Animal.Type.SPIDER, Animal.Sex.F, 7, 65, 21, true)
-                    )),
+                )),
             Arguments.of(
                 Arrays.asList(
                     new Animal(
-                        "Mars Croftoon Artz", Animal.Type.CAT, Animal.Sex.M, 13, 34, 30, false),
+                        "Mars   Croftoon Artz", Animal.Type.CAT, Animal.Sex.M, 13, 34, 30, false),
                     new Animal(
-                        "Doyle Clapton Ammerman", Animal.Type.DOG, Animal.Sex.F, 18, 20, 43, false),
+                        "Doyle Clapton   Ammerman", Animal.Type.DOG, Animal.Sex.F, 18, 20, 43, false),
                     new Animal(
-                        "Sheriff Bush Arellano", Animal.Type.FISH, Animal.Sex.F, 16, 3, 86, false),
+                        "Sheriff  Bush Arellano", Animal.Type.FISH, Animal.Sex.F, 16, 3, 86, false),
                     new Animal(
-                        "Jordan Bootman Asher", Animal.Type.CAT, Animal.Sex.F, 24, 46, 76, false)
+                        "Jordan Bootman    Asher", Animal.Type.CAT, Animal.Sex.F, 24, 46, 76, false)
                 )),
         };
 
+    }
+
+    static Arguments[] animalsWithValidationError() {
+        return new Arguments[] {
+            Arguments.of(
+                Map.<String, Set<ValidationError>>ofEntries(
+                )
+            ),
+            Arguments.of(
+                Map.<String, Set<ValidationError>>ofEntries(
+                    entry(
+                        "Admiral",
+                        Set.of(
+                            new ValidationError("Incorrect height of animal")
+                        )
+                    )
+                )
+            ),
+            Arguments.of(
+                Map.<String, Set<ValidationError>>ofEntries(
+                )
+            ),
+            Arguments.of(
+                Map.<String, Set<ValidationError>>ofEntries(
+                )
+            ),
+            Arguments.of(
+                Map.<String, Set<ValidationError>>ofEntries(
+                    entry(
+                        "Admiral",
+                        Set.of(
+                            new ValidationError("Incorrect height of animal")
+                        )
+                    ),
+                    entry(
+                        "Sheriff",
+                        Set.of(
+                            new ValidationError("Incorrect height of animal")
+                        )
+                    )
+                )
+            ),
+        };
+    }
+
+    static Arguments[] readableListOfAnimalsWithValidationError() {
+        return new Arguments[] {
+            Arguments.of(
+                Map.<String, Set<ValidationError>>ofEntries(
+                )
+            ),
+            Arguments.of(
+                Map.<String, String>ofEntries(
+                    entry(
+                        "Admiral",
+                        "Incorrect height of animal\n"
+                    )
+                )
+            ),
+            Arguments.of(
+                Map.<String, Set<ValidationError>>ofEntries(
+                )
+            ),
+            Arguments.of(
+                Map.<String, Set<ValidationError>>ofEntries(
+                )
+            ),
+            Arguments.of(
+                Map.<String, String>ofEntries(
+                    entry(
+                        "Admiral",
+                        "Incorrect height of animal\n"
+                    ),
+                    entry(
+                        "Sheriff",
+                        "Incorrect height of animal\n"
+                    )
+                )
+            ),
+        };
     }
 }

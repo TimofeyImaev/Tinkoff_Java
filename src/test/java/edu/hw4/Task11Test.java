@@ -13,7 +13,7 @@ public class Task11Test {
         for (int i = 0; i < 5; ++i) {
             animalListsWithMostCommonSex[i] =
                 Arguments.of(
-                    AnimalLists.animalLists()[i].get()[0],
+                    AnimalLists.animalWithHighHeightLists()[i].get()[0],
                     AnimalLists.listOfAnimalsWhichBitesAndHeightMoreTen()[i].get()[0]
                 );
         }

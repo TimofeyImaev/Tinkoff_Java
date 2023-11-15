@@ -1,14 +1,15 @@
 package edu.hw4;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static java.util.Map.entry;
@@ -16,13 +17,13 @@ import static java.util.Map.entry;
 @SuppressWarnings("CyclomaticComplexity")
 public class AnimalTools {
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final int TEN = 10;
-    private static final int FIVE = 5;
-    private static final int SEVENTY_ONE = 71;
-    private static final int THIRTHY_EIGHT = 38;
-    private static final int THIRTHY_ONE = 31;
-    private static final int FORTY_THREE = 43;
-    private static final int ONE_HUNDRED_TWELVE = 112;
+    private static final int HEIGHT_HUNDRED = 100;
+    private static final int MINIMAL_ANIMAL_HEIGHT = 5;
+    private static final int MAXIMUM_BIRD_AGE = 71;
+    private static final int MAXIMUM_CAT_AGE = 38;
+    private static final int MAXIMUM_DOG_AGE = 31;
+    private static final int MAXIMUM_SPIDER_AGE = 43;
+    private static final int MAXIMUM_FISH_AGE = 112;
     private static final String INCORRECT_AGE = "Incorrect age of animal";
 
     private AnimalTools() {
@@ -59,12 +60,7 @@ public class AnimalTools {
         }
 
         return animalLst.stream()
-            .reduce((first, second) -> {
-                if (first.name().length() < second.name().length()) {
-                    return second;
-                }
-                return first;
-            })
+            .max(Comparator.comparingInt(animal -> animal.name().length()))
             .get();
     }
 
@@ -132,20 +128,20 @@ public class AnimalTools {
     //Task10
     public static List<Animal> animalsWhichAgeNotEqualsCountOfPaws(List<Animal> animalList) {
         return animalList.stream()
-            .filter(animal -> animal.age() == animal.paws())
+            .filter(animal -> animal.age() != animal.paws())
             .collect(Collectors.toList());
     }
 
     //Task11
     public static List<Animal> listOfAnimalsWhichBitesAndHeightMoreTen(List<Animal> animalList) {
         return animalList.stream()
-            .filter(animal -> animal.bites() && animal.height() >= TEN)
+            .filter(animal -> animal.bites() && animal.height() >= HEIGHT_HUNDRED)
             .collect(Collectors.toList());
     }
 
     //Task12
     public static Integer amountOfAnimalsWhichWeightMoreHeight(List<Animal> animalList) {
-        return Integer.valueOf((int) animalList.stream()
+        return Math.toIntExact(animalList.stream()
             .filter(animal -> animal.weight() > animal.height())
             .count());
     }
@@ -153,14 +149,17 @@ public class AnimalTools {
     //Task13
     public static List<Animal> animalListsWithNamesLongerThanTwoWords(List<Animal> animalList) {
         return animalList.stream()
-            .filter(animal -> animal.name().split(" ").length > 2)
+            .filter(animal ->
+                Arrays.stream(animal.name().split(" ", 0))
+                    .filter(string -> !string.isEmpty())
+                    .toList().size() > 2)
             .collect(Collectors.toList());
     }
 
     //Task14
     public static Boolean isAnimalsListHadDogWithHeightMoreOrEqualsK(List<Animal> animalList, Integer k) {
         return animalList.stream()
-            .anyMatch(animal -> animal.height() >= k);
+            .anyMatch(animal -> animal.height() >= k && animal.type().equals(Animal.Type.DOG));
     }
 
     //Task15
@@ -180,16 +179,11 @@ public class AnimalTools {
     //Task16
     public static List<Animal> animalsListSortedByTypeSexName(List<Animal> animalList) {
         return animalList.stream()
-            .sorted((firstAnimal, secondAnimal) -> {
-                if (firstAnimal.type() == secondAnimal.type()) {
-                    if (firstAnimal.sex() == secondAnimal.sex()) {
-                        return firstAnimal.name().compareTo(secondAnimal.name());
-                    }
-
-                    return firstAnimal.sex().compareTo(secondAnimal.sex());
-                }
-                return firstAnimal.type().compareTo(secondAnimal.type());
-            })
+            .sorted(
+                Comparator.comparing(Animal::type)
+                    .thenComparing(Animal::sex)
+                    .thenComparing(Animal::name)
+            )
             .collect(Collectors.toList());
     }
 
@@ -213,60 +207,102 @@ public class AnimalTools {
     //Task18
     public static Animal heaviestFishInListsOfAnimals(List<List<Animal>> animalLists) {
         Optional<Animal> heaviestFish = animalLists.stream()
-            .map(Collection::stream)
-            .reduce(Stream::concat)
-            .get()
+            .flatMap(Collection::stream)
             .filter(animal -> animal.type().equals(Animal.Type.FISH))
             .max(Comparator.comparing(Animal::weight));
 
-        if (heaviestFish.isEmpty()) {
-            return null;
+        return heaviestFish.orElse(null);
+
+    }
+
+    public static Set<ValidationError> nameErrors(String animalName) {
+        Set<ValidationError> errors = new HashSet<ValidationError>();
+
+        for (var each : animalName.toCharArray()) {
+            if (!(each >= 'a' || each <= 'z') && each != ' '
+                && !(each >= 'A' || each <= 'Z')) {
+                errors.add(new ValidationError("Animal name should contains only latin letters and spaces"));
+                break;
+            }
         }
 
-        return heaviestFish.get();
+        return errors;
+    }
+
+    public static Set<ValidationError> ageErrors(Animal.Type type, int age) {
+        Set<ValidationError> errors = new HashSet<ValidationError>();
+
+        if (type == Animal.Type.BIRD && age > MAXIMUM_BIRD_AGE) {
+            errors.add(new ValidationError(INCORRECT_AGE));
+        }
+        if (type == Animal.Type.CAT && age > MAXIMUM_CAT_AGE) {
+            errors.add(new ValidationError(INCORRECT_AGE));
+        }
+        if (type == Animal.Type.DOG && age > MAXIMUM_DOG_AGE) {
+            errors.add(new ValidationError(INCORRECT_AGE));
+        }
+        if (type == Animal.Type.SPIDER && age > MAXIMUM_SPIDER_AGE) {
+            errors.add(new ValidationError(INCORRECT_AGE));
+        }
+        if (type == Animal.Type.FISH && age > MAXIMUM_FISH_AGE) {
+            errors.add(new ValidationError(INCORRECT_AGE));
+        }
+        if (age < 0) {
+            errors.add(new ValidationError(INCORRECT_AGE));
+        }
+
+        return errors;
+    }
+
+    public static Set<ValidationError> heightError(int height) {
+        Set<ValidationError> errors = new HashSet<ValidationError>();
+
+        if (height < MINIMAL_ANIMAL_HEIGHT) {
+            errors.add(new ValidationError("Incorrect height of animal"));
+        }
+
+        return errors;
+    }
+
+    public static Set<ValidationError> weightError(int weight) {
+        Set<ValidationError> errors = new HashSet<ValidationError>();
+
+        if (weight < 1) {
+            errors.add(new ValidationError("Incorrect weight of animal"));
+        }
+
+        return errors;
     }
 
     //Task19
     public static Map<String, Set<ValidationError>> animalsWithValidationError(List<Animal> animalList) {
         return animalList.stream()
             .map(animal -> {
-                Set<ValidationError> errors = new TreeSet<ValidationError>();
 
-                for (var each : animal.name().toCharArray()) {
-                    if (!(each >= 'a' || each <= 'z') && each != ' '
-                        && !(each >= 'A' || each <= 'Z')) {
-                        errors.add(new ValidationError("Animal name should contains only latin letters and spaces"));
-                        break;
-                    }
-                }
+                Set<ValidationError> errors = new HashSet<ValidationError>();
 
-                if (animal.type() == Animal.Type.BIRD && animal.age() > SEVENTY_ONE) {
-                    errors.add(new ValidationError(INCORRECT_AGE));
-                }
-                if (animal.type() == Animal.Type.CAT && animal.age() > THIRTHY_EIGHT) {
-                    errors.add(new ValidationError(INCORRECT_AGE));
-                }
-                if (animal.type() == Animal.Type.DOG && animal.age() > THIRTHY_ONE) {
-                    errors.add(new ValidationError(INCORRECT_AGE));
-                }
-                if (animal.type() == Animal.Type.SPIDER && animal.age() > FORTY_THREE) {
-                    errors.add(new ValidationError(INCORRECT_AGE));
-                }
-                if (animal.type() == Animal.Type.FISH && animal.age() > ONE_HUNDRED_TWELVE) {
-                    errors.add(new ValidationError(INCORRECT_AGE));
-                }
-                if (animal.age() < 0) {
-                    errors.add(new ValidationError(INCORRECT_AGE));
-                }
-
-                if (animal.height() < FIVE) {
-                    errors.add(new ValidationError("Incorrect height of animal"));
-                }
-                if (animal.weight() < 1) {
-                    errors.add(new ValidationError("Incorrect weight of animal"));
-                }
+                errors.addAll(nameErrors(animal.name()));
+                errors.addAll(ageErrors(animal.type(), animal.age()));
+                errors.addAll(heightError(animal.height()));
+                errors.addAll(weightError(animal.weight()));
 
                 return entry(animal.name(), errors);
+            })
+            .filter(entry -> !entry.getValue().isEmpty())
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    //Task20
+    public static Map<String, String> readableListOfAnimalsWithValidationError(List<Animal> animalList) {
+        return animalsWithValidationError(animalList).entrySet().stream()
+            .map(error -> {
+                String stringWithError = "";
+
+                for (var each : error.getValue()) {
+                    stringWithError += each.getMessage() + "\n";
+                }
+
+                return entry(error.getKey(), stringWithError);
             })
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
