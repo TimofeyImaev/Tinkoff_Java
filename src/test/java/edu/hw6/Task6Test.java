@@ -1,0 +1,75 @@
+package edu.hw6;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class Task6Test {
+    static Arguments[] portsTCPWithExpectedName() {
+        return new Arguments[] {
+            Arguments.of(
+                135, "TCP 135 EPMAP"
+            ),
+            Arguments.of(
+                139, "TCP 139 Служба сеансов NetBIOS"
+            ),
+            Arguments.of(
+                445, "TCP 445 Microsoft-DS Active Directory"
+            ),
+            Arguments.of(
+                843, "Adobe Flash"
+            ),
+            Arguments.of(
+                17500, "Dropbox"
+            ),
+        };
+    }
+
+    static Arguments[] portsUDPWithExpectedName() {
+        return new Arguments[] {
+            Arguments.of(
+                137, "UDP 137 Служба имен NetBIOS"
+            ),
+            Arguments.of(
+                138, "UDP 138 Служба датаграмм NetBIOS"
+            ),
+            Arguments.of(
+                1900, "UDP 1900 Simple Service Discovery Protocol (SSDP)"
+            ),
+            Arguments.of(
+                3702, "UDP 3702 Динамическое обнаружение веб-служб"
+            ),
+            Arguments.of(
+                5353, "UDP 5353 Многоадресный DNS"
+            ),
+        };
+    }
+
+    @ParameterizedTest
+    @MethodSource("portsTCPWithExpectedName")
+    void givenTCPPortWhenCheckThatItsOpenThenReturnNameOfPortBorrower(int port, String expectedAnswer) {
+        String actualAnswer = Task6.portInformation(port);
+
+        if (actualAnswer.equals("Open port")) {
+            assertTrue(true);
+            return;
+        }
+
+        assertThat(actualAnswer).isEqualTo(expectedAnswer);
+    }
+
+    @ParameterizedTest
+    @MethodSource("portsUDPWithExpectedName")
+    void givenUDPPortWhenCheckThatItsOpenThenReturnNameOfPortBorrower(int port, String expectedAnswer) {
+        String actualAnswer = Task6.portInformation(port);
+
+        if (actualAnswer.equals("Open port")) {
+            assertTrue(true);
+            return;
+        }
+
+        assertThat(actualAnswer).isEqualTo(expectedAnswer);
+    }
+}

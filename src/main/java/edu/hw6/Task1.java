@@ -46,10 +46,10 @@ public class Task1 {
                 return false;
             }
 
-            value = "[" + value + "]";
+            String valueInFile = "[" + value + "]";
 
             try {
-                Object finalValue = value;
+                Object finalValue = valueInFile;
                 return Files.list(DICT)
                     .anyMatch(path -> {
                         try {
