@@ -1,10 +1,14 @@
 package edu.hw8;
 
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Task2 {
+
+    private Task2() {
+
+    }
+
     public static int calculateFibonacci(int n) {
         if (n <= 1) {
             return 1;
@@ -14,8 +18,10 @@ public class Task2 {
     }
 
     public static int[] fastFibonacciCalculator(int n) {
+        final int COUNT_OF_THREADS_FOUR = 4;
+
         int[] fibonacciNumbers = new int[n];
-        FixedThreadPool fixedThreadPool = FixedThreadPool.create(4);
+        FixedThreadPool fixedThreadPool = FixedThreadPool.create(COUNT_OF_THREADS_FOUR);
 
         for (int i = 1; i <= n; ++i) {
             int finalI = i;
@@ -43,7 +49,7 @@ public class Task2 {
         private final Thread[] threads;
         private final BlockingQueue<Runnable> threadTasksQueue;
 
-        public FixedThreadPool(int countOfThreads) {
+        FixedThreadPool(int countOfThreads) {
             this.threads = new Thread[countOfThreads];
             this.threadTasksQueue = new LinkedBlockingQueue<>();
 

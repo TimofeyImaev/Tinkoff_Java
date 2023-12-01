@@ -18,22 +18,22 @@ public class Task1 {
         private final static Logger LOGGER = LogManager.getLogger();
         private static final int PORT = 4004;
         private static final int THREAD_POOL_SIZE = 10;
-        private static final ConcurrentMap<String, String> quotesMap = new ConcurrentHashMap<>();
+        private static final ConcurrentMap<String, String> QUOUTES_MAP = new ConcurrentHashMap<>();
 
         public static synchronized void start() {
-            quotesMap.put(
+            QUOUTES_MAP.put(
                 "личности",
                 "Не переходи на личности там, где их нет"
             );
-            quotesMap.put(
+            QUOUTES_MAP.put(
                 "оскорбления",
                 "Если твои противники перешли на личные оскорбления, будь уверена — твоя победа не за горами"
             );
-            quotesMap.put(
+            QUOUTES_MAP.put(
                 "глупый",
                 "А я тебе говорил, что ты глупый? Так вот, я забираю свои слова обратно... Ты просто бог идиотизма"
             );
-            quotesMap.put(
+            QUOUTES_MAP.put(
                 "интеллект",
                 "Чем ниже интеллект, тем громче оскорбления"
             );
@@ -57,7 +57,7 @@ public class Task1 {
         private static final class ClientHandler implements Runnable {
             private final Socket clientSocket;
 
-            public ClientHandler(Socket clientSocket) {
+            ClientHandler(Socket clientSocket) {
                 this.clientSocket = clientSocket;
             }
 
@@ -69,7 +69,7 @@ public class Task1 {
                     LOGGER.trace("Established connection with the client");
 
                     while ((keyword = in.readLine()) != null) {
-                        String quote = quotesMap.get(keyword.toLowerCase());
+                        String quote = QUOUTES_MAP.get(keyword.toLowerCase());
 
                         LOGGER.trace("the client sent a message: {}", keyword);
                         if (quote != null) {
