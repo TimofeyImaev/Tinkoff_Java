@@ -1,36 +1,56 @@
 package edu.hw9;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.RecursiveTask;
+import java.util.stream.Collectors;
 
 public class Task2 {
-    static class AmountOfDirectoryFiles extends RecursiveTask<Integer> {
-        private final File currentDirectory;
+    private static final int MAX_COUNT_OF_FILES = 3;
 
-        AmountOfDirectoryFiles(File currentDirectory) {
+    static class DirectoriesWithAtLeastThreeFiles extends RecursiveTask<List<Path>> {
+        private final Path currentDirectory;
+
+        DirectoriesWithAtLeastThreeFiles(Path currentDirectory) {
             this.currentDirectory = currentDirectory;
         }
 
         @Override
-        protected Integer compute() {
-            if (!currentDirectory.isDirectory()) {
-                return 0;
+        protected List<Path> compute() {
+            List<Path> directoriesWithAtLeastThreeFiles = new ArrayList<>();
+
+            if (!Files.isDirectory(currentDirectory)) {
+                return directoriesWithAtLeastThreeFiles;
             }
 
-            int amountOfFilesInCurrentDirectory = 0;
-            File[] listFiles = currentDirectory.listFiles();
-            AmountOfDirectoryFiles[] filesFromCurrentDirectory = new AmountOfDirectoryFiles[listFiles.length];
-
-            for (int i = 0; i < listFiles.length; ++i) {
-                filesFromCurrentDirectory[i] = new AmountOfDirectoryFiles(listFiles[i]);
-                filesFromCurrentDirectory[i].fork();
+            List<Path> files;
+            try {
+                files = Files.list(currentDirectory).collect(Collectors.toList());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
 
-            for (int i = 0; i < listFiles.length; ++i) {
-                amountOfFilesInCurrentDirectory += filesFromCurrentDirectory[i].join() + 1;
+            if (files != null) {
+                DirectoriesWithAtLeastThreeFiles[] tasks = new DirectoriesWithAtLeastThreeFiles[files.size()];
+
+                for (int i = 0; i < files.size(); ++i) {
+                    tasks[i] = new DirectoriesWithAtLeastThreeFiles(files.get(i));
+                    tasks[i].fork();
+                }
+
+                for (int i = 0; i < files.size(); ++i) {
+                    directoriesWithAtLeastThreeFiles.addAll(tasks[i].join());
+                }
+
+                if (files.size() >= MAX_COUNT_OF_FILES) {
+                    directoriesWithAtLeastThreeFiles.add(currentDirectory);
+                }
             }
 
-            return amountOfFilesInCurrentDirectory;
+            return directoriesWithAtLeastThreeFiles;
         }
     }
 }
