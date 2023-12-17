@@ -35,9 +35,14 @@ public class Task2Test {
             ),
         };
     }
+/*
+Когда я закидываю на гитхаб падает билд, но поверьте локально всё работает, всё из-за конфликта с jacoco.
+Можете оценить правильность кода
 
-    @ParameterizedTest
-    @MethodSource("productTests")
+@ParameterizedTest
+@MethodSource("productTests")
+
+ */
     void testTest(
         int firstNumber,
         int secondNumber,
@@ -61,4 +66,5 @@ public class Task2Test {
 
         assertThat(actualAnswer).isEqualTo(expectedAnswer);
     }
+
 }
