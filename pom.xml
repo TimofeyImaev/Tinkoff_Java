@@ -246,10 +246,6 @@
                         <consoleOutput>true</consoleOutput>
                         <logViolationsToConsole>true</logViolationsToConsole>
                         <failsOnError>true</failsOnError>
-                        <excludes>
-                            <exclude>**/edu/hw11/task2/Task2.class</exclude>
-                            <exclude>**/edu/hw11/Task2Test.class</exclude>
-                        </excludes>
                     </configuration>
                 </plugin>
             </plugins>
