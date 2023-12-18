@@ -12,17 +12,26 @@ public class Main {
     }
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        Labyrinth labyrinth = new Labyrinth(ELEVEN);
-
-        labyrinth.buildLabyrinthUsingRecursiveBacktracker();
-
+        Labyrinth labyrinth = new Labyrinth(
+            BuildLabyrinthRecursively.buildLabyrinthUsingRecursiveBacktracker(ELEVEN)
+        );
         //labyrinth.writeLabyrinth();
 
         //TimeUnit.MILLISECONDS.sleep(10000);
-        labyrinth.findPathWithDfs(1, 1, TWENTY_ONE, NINETEEN, true);
+        DepthFirstSearch depthFirstSearch = new DepthFirstSearch(
+            labyrinth.labyrinth,
+            labyrinth.frame,
+            labyrinth.labels
+        );
+        depthFirstSearch.findPathWithDfs(1, 1, TWENTY_ONE, NINETEEN, true);
 
+        BreadthFirstSearch breathFirstSearch = new BreadthFirstSearch(
+            labyrinth.labyrinth,
+            labyrinth.frame,
+            labyrinth.labels
+        );
         //TimeUnit.MILLISECONDS.sleep(10000);
-        labyrinth.findPathWithBfs(1, 1, TWENTY_ONE, NINETEEN, true);
+        breathFirstSearch.findPathWithBfs(1, 1, TWENTY_ONE, NINETEEN, true);
 
     }
 }
