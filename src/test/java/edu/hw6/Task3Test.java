@@ -203,7 +203,7 @@ public class Task3Test {
         Path file,
         List<String> expectedAnswer
     ) throws IOException {
-        Task3.RegexFilter regexFilter = new Task3.RegexFilter(".*/.txt$");
+        Task3.RegexFilter regexFilter = new Task3.RegexFilter(".*\\.txt$");
 
         DirectoryStream<Path> actualAnswer = newDirectoryStream(file, regexFilter);
 
