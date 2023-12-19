@@ -10,21 +10,21 @@ import static java.time.DayOfWeek.FRIDAY;
 public class Task2 {
     private final static Logger LOGGER = LogManager.getLogger();
     private final static int THIRTEEN = 13;
+    private final static int AMOUNT_OF_MONTH_IN_YEAR = 12;
 
     private Task2() {
 
     }
 
     static ArrayList<String> allFridaysThirteenthOfYheYear(int year) {
-        LocalDate verifiableDate = LocalDate.of(year, 1, 1);
         ArrayList<String> fridaysThirteenth = new ArrayList<>();
 
-        while (verifiableDate.getYear() == year) {
+        for (int month = 1; month <= AMOUNT_OF_MONTH_IN_YEAR; ++month) {
+            LocalDate verifiableDate = LocalDate.of(year, month, THIRTEEN);
+
             if (verifiableDate.getDayOfMonth() == THIRTEEN && verifiableDate.getDayOfWeek().equals(FRIDAY)) {
                 fridaysThirteenth.add(verifiableDate.toString());
             }
-
-            verifiableDate = verifiableDate.plusDays(1);
         }
 
         return fridaysThirteenth;

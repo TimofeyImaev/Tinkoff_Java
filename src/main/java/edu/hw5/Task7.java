@@ -8,11 +8,11 @@ public class Task7 {
     }
 
     public static boolean isThirdCharacterZero(String string) {
-        return Pattern.matches("^..0.*$", string);
+        return Pattern.matches("^[01][01]0[01]*$", string);
     }
 
     public static boolean startEndSymbolsAreEqual(String string) {
-        return Pattern.matches("^([01]).*\\1|[01]$", string);
+        return Pattern.matches("^([01])[01]*\\1|[01]$", string);
     }
 
     public static boolean lengthFromOneToThree(String string) {

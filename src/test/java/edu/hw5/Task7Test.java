@@ -18,6 +18,7 @@ public class Task7Test {
             Arguments.of("0", false),
             Arguments.of("1", false),
             Arguments.of("0010010", false),
+            Arguments.of("ab0cd123", false),
         };
     }
 

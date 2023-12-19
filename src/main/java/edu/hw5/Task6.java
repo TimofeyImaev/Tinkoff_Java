@@ -12,7 +12,7 @@ public class Task6 {
     }
 
     public static boolean isSubsequence(String s, String t) {
-        String pattern = ".*" + s.replaceAll(".", "$0.*");
+        String pattern = ".*" + s + ".*";
 
         LOGGER.trace("{} is subsequence pattern: {}", s, pattern);
 
