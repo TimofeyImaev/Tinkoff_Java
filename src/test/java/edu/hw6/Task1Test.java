@@ -145,7 +145,7 @@ public class Task1Test {
 
         for (var each : entrysList) {
             if (!Files.exists(Path.of(
-                Paths.getPathToRepository() + "\\src\\main\\java\\edu\\hw6\\dictionary\\" +
+                Paths.getPathToRepository() + "/src/main/java/edu/hw6/dictionary/" +
                     each.first))) {
                 fail();
             }
@@ -254,7 +254,7 @@ public class Task1Test {
 
         for (var each : map.entrySet()) {
             if (!Files.exists(Path.of(
-                Paths.getPathToRepository() + "\\src\\main\\java\\edu\\hw6\\dictionary\\" +
+                Paths.getPathToRepository() + "/src/main/java/edu/hw6/dictionary/" +
                     each.getKey()))) {
                 fail();
             }

@@ -17,12 +17,12 @@ public class Task3Test {
         return new Arguments[] {
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\b1234"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/b1234"),
                 List.of("Tinkoff Bank Biggest Secret.txt")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\firstDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/firstDirectory"),
                 List.of(
                     "Tinkoff Bank Biggest Secret — копия (2).txt",
                     "Tinkoff Bank Biggest Secret — копия.txt",
@@ -32,17 +32,17 @@ public class Task3Test {
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\Folder"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/Folder"),
                 List.of()
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\secondDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/secondDirectory"),
                 List.of("tocopyfile.txt")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\thirdDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/thirdDirectory"),
                 List.of()
             ),
         };
@@ -52,12 +52,12 @@ public class Task3Test {
         return new Arguments[] {
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\b1234"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/b1234"),
                 List.of("Tinkoff Bank Biggest Secret.txt")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\firstDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/firstDirectory"),
                 List.of(
                     "Tinkoff Bank Biggest Secret — копия (2).txt",
                     "Tinkoff Bank Biggest Secret — копия.txt",
@@ -67,17 +67,17 @@ public class Task3Test {
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\Folder"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/Folder"),
                 List.of("file123", "somefile")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\secondDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/secondDirectory"),
                 List.of("tocopyfile.txt", "tocopyfile - копия")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\thirdDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/thirdDirectory"),
                 List.of()
             ),
         };
@@ -87,27 +87,27 @@ public class Task3Test {
         return new Arguments[] {
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\b1234"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/b1234"),
                 List.of("thisfile.png")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\firstDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/firstDirectory"),
                 List.of()
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\Folder"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/Folder"),
                 List.of()
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\secondDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/secondDirectory"),
                 List.of()
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\thirdDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/thirdDirectory"),
                 List.of()
             ),
         };
@@ -117,12 +117,12 @@ public class Task3Test {
         return new Arguments[] {
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\b1234"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/b1234"),
                 List.of("thisfile.png", "Tinkoff Bank Biggest Secret.txt")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\firstDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/firstDirectory"),
                 List.of(
                     "nottext",
                     "Tinkoff Bank Biggest Secret — копия (2).txt",
@@ -133,17 +133,17 @@ public class Task3Test {
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\Folder"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/Folder"),
                 List.of("file123", "somefile")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\secondDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/secondDirectory"),
                 List.of("tocopyfile - копия", "tocopyfile.txt")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\thirdDirectory"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/thirdDirectory"),
                 List.of("asdfile", "asdfile — копия", "asdfile — копия (1)")
             ),
         };
@@ -203,7 +203,7 @@ public class Task3Test {
         Path file,
         List<String> expectedAnswer
     ) throws IOException {
-        Task3.RegexFilter regexFilter = new Task3.RegexFilter(".*\\.txt$");
+        Task3.RegexFilter regexFilter = new Task3.RegexFilter(".*/.txt$");
 
         DirectoryStream<Path> actualAnswer = newDirectoryStream(file, regexFilter);
 

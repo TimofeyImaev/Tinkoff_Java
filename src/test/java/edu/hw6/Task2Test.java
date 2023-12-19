@@ -14,33 +14,33 @@ public class Task2Test {
         return new Arguments[] {
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\b1234\\Tinkoff Bank Biggest Secret.txt"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/b1234/Tinkoff Bank Biggest Secret.txt"),
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\b1234\\Tinkoff Bank Biggest Secret — копия.txt")
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/b1234/Tinkoff Bank Biggest Secret — копия.txt")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\firstDirectory\\Tinkoff Bank Biggest Secret.txt"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/firstDirectory/Tinkoff Bank Biggest Secret.txt"),
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\firstDirectory\\Tinkoff Bank Biggest Secret — копия (3).txt")
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/firstDirectory/Tinkoff Bank Biggest Secret — копия (3).txt")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\Folder\\somefile"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/Folder/somefile"),
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\Folder\\somefile — копия")
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/Folder/somefile — копия")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\secondDirectory\\tocopyfile.txt"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/secondDirectory/tocopyfile.txt"),
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\secondDirectory\\tocopyfile — копия.txt")
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/secondDirectory/tocopyfile — копия.txt")
             ),
             Arguments.of(
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\thirdDirectory\\asdfile"),
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/thirdDirectory/asdfile"),
                 Path.of(
-                    Paths.getPathToRepository() + "\\src\\test\\java\\edu\\hw6\\TestDirectories\\thirdDirectory\\asdfile — копия (2)")
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/thirdDirectory/asdfile — копия (2)")
             ),
         };
     }
