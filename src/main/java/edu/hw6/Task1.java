@@ -17,7 +17,7 @@ public class Task1 {
 
     static class DiskMap implements Map<String, String> {
         private static final Path DICT =
-            Path.of("C:\\Users\\ullle\\IdeaProjects\\java-course-2023\\src\\main\\java\\edu\\hw6\\dictionary");
+            Path.of(Paths.getPathToRepository() + "\\src\\main\\java\\edu\\hw6\\dictionary");
         private static int size = 0;
 
         @Override
