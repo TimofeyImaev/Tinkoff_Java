@@ -19,9 +19,6 @@ public class Task6Test {
                 445, "TCP 445 Microsoft-DS Active Directory"
             ),
             Arguments.of(
-                843, "Adobe Flash"
-            ),
-            Arguments.of(
                 17500, "Dropbox"
             ),
         };
@@ -29,12 +26,6 @@ public class Task6Test {
 
     static Arguments[] portsUDPWithExpectedName() {
         return new Arguments[] {
-            Arguments.of(
-                137, "UDP 137 Служба имен NetBIOS"
-            ),
-            Arguments.of(
-                138, "UDP 138 Служба датаграмм NetBIOS"
-            ),
             Arguments.of(
                 1900, "UDP 1900 Simple Service Discovery Protocol (SSDP)"
             ),

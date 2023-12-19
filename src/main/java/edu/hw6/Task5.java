@@ -14,11 +14,12 @@ public class Task5 {
     static class HackerNews {
         private final static Pattern PATTERN = Pattern.compile("\"title\":\".+?\"");
         private final static int NINTH_SYMBOL = 9;
+        private final static String URI_HACKER_NEWS = "https://hacker-news.firebaseio.com/v0";
         private long[] hackerNewsTopStoriesId;
 
         public long[] hackerNewsTopStories() throws URISyntaxException, IOException, InterruptedException {
             HttpRequest getIdsRequest = HttpRequest.newBuilder()
-                .uri(new URI("https://hacker-news.firebaseio.com/v0/topstories.json"))
+                .uri(new URI(URI_HACKER_NEWS + "/topstories.json"))
                 .GET()
                 .build();
 
@@ -35,7 +36,7 @@ public class Task5 {
 
         public String news(long id) throws IOException, InterruptedException, URISyntaxException {
             HttpRequest getIdsRequest = HttpRequest.newBuilder()
-                .uri(new URI("https://hacker-news.firebaseio.com/v0/item/" + id + ".json"))
+                .uri(new URI(URI_HACKER_NEWS + "/item/" + id + ".json"))
                 .GET()
                 .build();
 

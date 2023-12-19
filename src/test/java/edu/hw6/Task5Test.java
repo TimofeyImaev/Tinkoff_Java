@@ -1,13 +1,12 @@
 package edu.hw6;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class Task5Test {
     static Arguments[] idsByNames() {
@@ -35,6 +34,10 @@ public class Task5Test {
     void givenNewsStoriesIdWhenGettingTitleFromStoryThenReturnTitle(int id, String expectedAnswer)
         throws IOException, URISyntaxException, InterruptedException {
         Task5.HackerNews hackerNews = new Task5.HackerNews();
+        if (hackerNews.hackerNewsTopStories().length == 0) {
+            fail("Empty array of top stories.");
+        }
+
         String actualAnswer = hackerNews.news(id);
 
         assertThat(actualAnswer).isEqualTo(expectedAnswer);

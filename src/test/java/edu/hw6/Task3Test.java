@@ -149,6 +149,71 @@ public class Task3Test {
         };
     }
 
+    static Arguments[] directoryPathsWithRegexAndSizeAns() {
+        return new Arguments[] {
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/b1234"),
+                List.of("Tinkoff Bank Biggest Secret.txt")
+            ),
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/firstDirectory"),
+                List.of(
+                    "Tinkoff Bank Biggest Secret — копия (2).txt",
+                    "Tinkoff Bank Biggest Secret — копия.txt",
+                    "Tinkoff Bank Biggest Secret — копия (1).txt",
+                    "Tinkoff Bank Biggest Secret.txt"
+                )
+            ),
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/Folder"),
+                List.of()
+            ),
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/secondDirectory"),
+                List.of("tocopyfile.txt")
+            ),
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/thirdDirectory"),
+                List.of()
+            ),
+        };
+    }
+
+    static Arguments[] directoryPathsWithMagicNumberAndAttributesAnswer() {
+        return new Arguments[] {
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/b1234"),
+                List.of("thisfile.png")
+            ),
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/firstDirectory"),
+                List.of()
+            ),
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/Folder"),
+                List.of()
+            ),
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/secondDirectory"),
+                List.of()
+            ),
+            Arguments.of(
+                Path.of(
+                    Paths.getPathToRepository() + "/src/test/java/edu/hw6/TestDirectories/thirdDirectory"),
+                List.of()
+            ),
+        };
+    }
+
     @ParameterizedTest
     @MethodSource("directoryPathsWithRegexAns")
     void givenDirectoryPathWhenFilteringFilesByExtensionThenReturnStreamOfPaths(
@@ -270,4 +335,59 @@ public class Task3Test {
 
         assertEquals(expectedAnswer.size(), actualAnswerSize.get());
     }
+
+    @ParameterizedTest
+    @MethodSource("directoryPathsWithRegexAndSizeAns")
+    void givenDirectoryPathWhenFilteringBySizeAndRegexThenReturnStreamOfPaths(
+        Path file,
+        List<String> expectedAnswer
+    ) throws IOException {
+        Task3.AbstractFilter filter = new Task3.SizeFilter()
+            .and(new Task3.RegexFilter(".*\\.txt$"));
+
+        DirectoryStream<Path> actualAnswer =
+            newDirectoryStream(
+                file,
+                filter
+            );
+
+        AtomicInteger actualAnswerSize = new AtomicInteger();
+
+        actualAnswer.forEach(
+            path -> {
+                if (!expectedAnswer.contains(path.getFileName().toString())) {
+                    fail(path.getFileName().toString());
+                }
+                actualAnswerSize.getAndIncrement();
+            }
+        );
+
+        assertEquals(expectedAnswer.size(), actualAnswerSize.get());
+    }
+
+    @ParameterizedTest
+    @MethodSource("directoryPathsWithMagicNumberAndAttributesAnswer")
+    void givenDirectoryPathWhenFilteringFilesByMagicNumbersAndAttributesThenReturnStreamOfPaths(
+        Path file,
+        List<String> expectedAnswer
+    ) throws IOException {
+        Task3.AbstractFilter filter = new Task3.MagicNumbersFilter(0x89)
+            .and(new Task3.AttributeFilter("readable"));
+
+        DirectoryStream<Path> actualAnswer = newDirectoryStream(file, filter);
+
+        AtomicInteger actualAnswerSize = new AtomicInteger();
+
+        actualAnswer.forEach(
+            path -> {
+                if (!expectedAnswer.contains(path.getFileName().toString())) {
+                    fail(path.getFileName().toString());
+                }
+                actualAnswerSize.getAndIncrement();
+            }
+        );
+
+        assertEquals(actualAnswerSize.get(), expectedAnswer.size());
+    }
+
 }
