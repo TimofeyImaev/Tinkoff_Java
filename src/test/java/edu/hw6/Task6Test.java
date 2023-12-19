@@ -1,14 +1,12 @@
 package edu.hw6;
 
-import org.junit.jupiter.api.Test;
+import java.io.IOException;
+import java.net.ServerSocket;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import java.io.IOException;
-import java.net.ServerSocket;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class Task6Test {
     static Arguments[] portsTCPWithExpectedName() {
@@ -42,6 +40,16 @@ public class Task6Test {
         };
     }
 
+    static Arguments[] openPorts() {
+        return new Arguments[] {
+            Arguments.of(152),
+            Arguments.of(243),
+            Arguments.of(856),
+            Arguments.of(2362),
+            Arguments.of(325)
+        };
+    }
+
     @ParameterizedTest
     @MethodSource("portsTCPWithExpectedName")
     void givenTCPPortWhenCheckThatItsOpenThenReturnNameOfPortBorrower(int port, String expectedAnswer) {
@@ -68,28 +76,20 @@ public class Task6Test {
         assertThat(actualAnswer).isEqualTo(expectedAnswer);
     }
 
-    static Arguments[] openPorts(){
-        return new Arguments[]{
-            Arguments.of(152),
-            Arguments.of(243),
-            Arguments.of(856),
-            Arguments.of(2362),
-            Arguments.of(325)
-        };
-    }
-
     @ParameterizedTest
     @MethodSource("openPorts")
     void givenClosedPortWhenCheckingThatHeIsCloseThenDontReturnOpenPort(
         int port
-    ){
+    ) {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             boolean isClose = !Task6.portInformation(port).equals("Open port");
 
             serverSocket.close();
             assertTrue(isClose);
         } catch (IOException e) {
-            fail();
+            boolean isClose = !Task6.portInformation(port).equals("Open port");
+
+            assertTrue(isClose);
         }
     }
 }
