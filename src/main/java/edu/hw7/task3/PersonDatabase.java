@@ -1,6 +1,5 @@
 package edu.hw7.task3;
 
-import edu.hw7.Task3;
 import java.util.List;
 
 interface PersonDatabase {
