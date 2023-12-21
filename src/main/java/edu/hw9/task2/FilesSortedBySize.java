@@ -32,6 +32,7 @@ public class FilesSortedBySize extends RecursiveTask<List<Path>> {
                 files = Files.list(currentPath).collect(Collectors.toList());
             }
         } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         if (Files.isDirectory(currentPath)) {

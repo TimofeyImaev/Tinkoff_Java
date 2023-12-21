@@ -5,6 +5,8 @@ import edu.hw9.task2.FilesSortedByExtension;
 import edu.hw9.task2.FilesSortedBySize;
 import java.nio.file.Path;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task2Test {
+    private final static Logger LOGGER = LogManager.getLogger();
     static Path currentFilePath = Path.of(Paths.getRepositoryPath());
     static Path someDirectory =
         currentFilePath.resolve("src/test/java/edu/hw9/someDirectory");
@@ -58,6 +61,20 @@ public class Task2Test {
                     someDirectory.resolve("randomDirectory/directory/file.png"),
                     someDirectory.resolve("randomDirectory/directory/twoFiles/file1"),
                     someDirectory.resolve("thisispng.png")
+                )
+            ),
+            Arguments.of(
+                someDirectory.resolve("BigDirectory"),
+                List.<Path>of(
+                    someDirectory.resolve("BigDirectory/some.png"),
+                    someDirectory.resolve("BigDirectory/someFIleTwo")
+                )
+            ),
+            Arguments.of(
+                someDirectory.resolve("randomDirectory"),
+                List.<Path>of(
+                    someDirectory.resolve("randomDirectory/directory/file.png"),
+                    someDirectory.resolve("randomDirectory/directory/twoFiles/file1")
                 )
             ),
             Arguments.of(
@@ -134,6 +151,8 @@ public class Task2Test {
         List<Path> actualAnswer = filesSortedBySize.join();
 
         boolean expectedAnswerEqualsActualAnswer = expectedAnswer.size() == actualAnswer.size();
+
+        LOGGER.trace("actualAnswer: {}, expectedAnswer: {}", actualAnswer, expectedAnswer);
 
         for (var each : expectedAnswer) {
             if (!actualAnswer.contains(each)) {
