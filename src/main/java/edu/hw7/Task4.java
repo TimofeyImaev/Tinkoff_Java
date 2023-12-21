@@ -41,8 +41,9 @@ public class Task4 {
         final int FOUR_MONTE_CARLO_FORMULA_COEFFICIENT = 4;
         AtomicLong circleCount = new AtomicLong(0);
         AtomicInteger countOfFinishedThreads = new AtomicInteger(0);
+        Thread[] threads = new Thread[countOfThreads];
 
-        for (long i = 0; i < countOfThreads; ++i) {
+        for (int i = 0; i < countOfThreads; ++i) {
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
@@ -63,12 +64,16 @@ public class Task4 {
                 }
             };
 
-            Thread thread = new Thread(runnable);
-            thread.start();
+            threads[i] = new Thread(runnable);
+            threads[i].start();
         }
 
-        while (countOfFinishedThreads.get() < countOfThreads) {
-            continue;
+        for (int i = 0; i < countOfThreads; ++i) {
+            try {
+                threads[i].join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         return (double) (FOUR_MONTE_CARLO_FORMULA_COEFFICIENT * circleCount.get()) / totalCountOfPoints;

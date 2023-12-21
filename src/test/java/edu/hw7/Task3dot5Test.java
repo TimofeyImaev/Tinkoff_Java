@@ -1,11 +1,12 @@
 package edu.hw7;
 
-import java.util.List;
 import edu.hw7.task3.Person;
 import edu.hw7.task3.PersonDatabaseReadWriteLockRealization;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import org.junit.jupiter.api.Test;
-import static java.lang.Thread.sleep;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Task3dot5Test {
     @Test
@@ -126,6 +127,11 @@ public class Task3dot5Test {
     void givenPersonDBWhenParallelAddingAndFindingPeopleByNameThenReturn() throws InterruptedException {
         PersonDatabaseReadWriteLockRealization
             personDatabaseReadWriteLockRealization = new PersonDatabaseReadWriteLockRealization();
+        CountDownLatch countDownLatch = new CountDownLatch(2);
+        List<Person> expectedAnswer = List.of(
+            new Person(2, "Tom", "Torina 10", "+74121257")
+        );
+        final List<Person>[] actualAnswer = new List[] {List.of()};
 
         Runnable runnable1 = new Runnable() {
             @Override
@@ -133,8 +139,8 @@ public class Task3dot5Test {
                 personDatabaseReadWriteLockRealization.add(new Person(1, "Tim", "Gagarina 30", "+7478447"));
                 personDatabaseReadWriteLockRealization.add(new Person(2, "Tom", "Torina 10", "+74121257"));
 
-                assertThat(personDatabaseReadWriteLockRealization.findByName("Tom"))
-                    .isEqualTo(new Person(2, "Tom", "Torina 10", "+74121257"));
+                actualAnswer[0] = personDatabaseReadWriteLockRealization.findByName("Tom");
+                countDownLatch.countDown();
             }
         },
             runnable2 = new Runnable() {
@@ -147,6 +153,7 @@ public class Task3dot5Test {
                         "Kokorina 10",
                         "+72352357"
                     ));
+                    countDownLatch.countDown();
                 }
             };
         Thread th1 = new Thread(runnable1);
@@ -154,18 +161,27 @@ public class Task3dot5Test {
 
         th1.start();
         th2.start();
+        countDownLatch.await();
+
+        assertEquals(expectedAnswer, actualAnswer[0]);
     }
 
     @Test
     void givenPersonDBWhenParallelAddingAndFindingPeopleByAddressThenReturn() throws InterruptedException {
         PersonDatabaseReadWriteLockRealization
             personDatabaseReadWriteLockRealization = new PersonDatabaseReadWriteLockRealization();
+        CountDownLatch countDownLatch = new CountDownLatch(2);
+        List<Person> expectedAnswer = List.of(
+            new Person(5, "Kamila", "Bimireno 30", "+2352351")
+        );
+        final List<Person>[] actualAnswer = new List[] {List.of()};
 
         Runnable runnable1 = new Runnable() {
             @Override
             public void run() {
                 personDatabaseReadWriteLockRealization.add(new Person(1, "Tim", "Gagarina 30", "+7478447"));
                 personDatabaseReadWriteLockRealization.add(new Person(2, "Tom", "Torina 10", "+74121257"));
+                countDownLatch.countDown();
             }
         },
             runnable2 = new Runnable() {
@@ -178,8 +194,8 @@ public class Task3dot5Test {
                         "Kokorina 10",
                         "+72352357"
                     ));
-                    assertThat(personDatabaseReadWriteLockRealization.findByAddress("Bimireno 30"))
-                        .isEqualTo(new Person(5, "Kamila", "Bimireno 30", "+2352351"));
+                    actualAnswer[0] = personDatabaseReadWriteLockRealization.findByAddress("Bimireno 30");
+                    countDownLatch.countDown();
                 }
             };
         Thread th1 = new Thread(runnable1);
@@ -187,18 +203,30 @@ public class Task3dot5Test {
 
         th1.start();
         th2.start();
+        countDownLatch.await();
+
+        assertEquals(expectedAnswer, actualAnswer[0]);
     }
 
     @Test
     void givenPersonDBWhenParallelAddingAndFindingPeopleByPhoneThenReturn() throws InterruptedException {
         PersonDatabaseReadWriteLockRealization
             personDatabaseReadWriteLockRealization = new PersonDatabaseReadWriteLockRealization();
+        CountDownLatch countDownLatch = new CountDownLatch(2);
+        List<Person> expectedAnswer = List.of(new Person(
+            12,
+            "Niemand",
+            "Kokorina 10",
+            "+72352357"
+        ));
+        final List<Person>[] actualAnswer = new List[] {List.of()};
 
         Runnable runnable1 = new Runnable() {
             @Override
             public void run() {
                 personDatabaseReadWriteLockRealization.add(new Person(1, "Tim", "Gagarina 30", "+7478447"));
                 personDatabaseReadWriteLockRealization.add(new Person(2, "Tom", "Torina 10", "+74121257"));
+                countDownLatch.countDown();
             }
         },
             runnable2 = new Runnable() {
@@ -211,13 +239,8 @@ public class Task3dot5Test {
                         "Kokorina 10",
                         "+72352357"
                     ));
-                    assertThat(personDatabaseReadWriteLockRealization.findByPhone("+72352357"))
-                        .isEqualTo(List.of(new Person(
-                            12,
-                            "Niemand",
-                            "Kokorina 10",
-                            "+72352357"
-                        )));
+                    actualAnswer[0] = personDatabaseReadWriteLockRealization.findByPhone("+72352357");
+                    countDownLatch.countDown();
                 }
             };
         Thread th1 = new Thread(runnable1);
@@ -225,5 +248,8 @@ public class Task3dot5Test {
 
         th1.start();
         th2.start();
+        countDownLatch.await();
+
+        assertEquals(expectedAnswer, actualAnswer[0]);
     }
 }
