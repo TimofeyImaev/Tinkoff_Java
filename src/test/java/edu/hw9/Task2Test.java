@@ -146,7 +146,7 @@ public class Task2Test {
         List<Path> expectedAnswer
     ) {
         FilesSortedBySize filesSortedBySize =
-            new FilesSortedBySize(rootOfTree, 10);
+            new FilesSortedBySize(rootOfTree, 20);
 
         filesSortedBySize.fork();
         List<Path> actualAnswer = filesSortedBySize.join();
