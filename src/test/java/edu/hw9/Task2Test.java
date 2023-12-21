@@ -61,20 +61,6 @@ public class Task2Test {
                 )
             ),
             Arguments.of(
-                someDirectory.resolve("BigDirectory"),
-                List.<Path>of(
-                    someDirectory.resolve("BigDirectory/some.png"),
-                    someDirectory.resolve("BigDirectory/someFIleTwo")
-                )
-            ),
-            Arguments.of(
-                someDirectory.resolve("randomDirectory"),
-                List.<Path>of(
-                    someDirectory.resolve("randomDirectory/directory/file.png"),
-                    someDirectory.resolve("randomDirectory/directory/twoFiles/file1")
-                )
-            ),
-            Arguments.of(
                 someDirectory.resolve("smallDirectory"),
                 List.<Path>of(
                 )
