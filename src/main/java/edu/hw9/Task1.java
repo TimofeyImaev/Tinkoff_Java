@@ -66,7 +66,6 @@ public class Task1 {
 
                 while (true) {
                     if (synchronizedSet.put(metricName)) {
-                        System.out.println(1 + metricName);
                         if (sumMap.containsKey(metricName)) {
                             double oldSum = sumMap.get(metricName);
                             Integer oldAmount = amountMap.get(metricName);
@@ -96,7 +95,6 @@ public class Task1 {
                         }
 
                         synchronizedSet.delete(metricName);
-                        System.out.println(2 + metricName);
                         break;
                     }
                 }
