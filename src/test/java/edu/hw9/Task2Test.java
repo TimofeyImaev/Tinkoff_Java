@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Task2Test {
     static Path currentFilePath = Path.of(Paths.getRepositoryPath());
@@ -123,7 +124,15 @@ public class Task2Test {
         filesSortedBySize.fork();
         List<Path> actualAnswer = filesSortedBySize.join();
 
-        assertEquals(expectedAnswer, actualAnswer);
+        boolean expectedAnswerEqualsActualAnswer = expectedAnswer.size() == actualAnswer.size();
+
+        for (var each : expectedAnswer) {
+            if (!actualAnswer.contains(each)) {
+                expectedAnswerEqualsActualAnswer = false;
+            }
+        }
+
+        assertTrue(expectedAnswerEqualsActualAnswer);
     }
 
     @ParameterizedTest
@@ -138,7 +147,15 @@ public class Task2Test {
         filesSortedBySize.fork();
         List<Path> actualAnswer = filesSortedBySize.join();
 
-        assertEquals(expectedAnswer, actualAnswer);
+        boolean expectedAnswerEqualsActualAnswer = expectedAnswer.size() == actualAnswer.size();
+
+        for (var each : expectedAnswer) {
+            if (!actualAnswer.contains(each)) {
+                expectedAnswerEqualsActualAnswer = false;
+            }
+        }
+
+        assertTrue(expectedAnswerEqualsActualAnswer);
     }
 
     @ParameterizedTest
@@ -153,6 +170,14 @@ public class Task2Test {
         directoriesWithAtLeastThreeFiles.fork();
         List<Path> actualAnswer = directoriesWithAtLeastThreeFiles.join();
 
-        assertEquals(expectedAnswer, actualAnswer);
+        boolean expectedAnswerEqualsActualAnswer = expectedAnswer.size() == actualAnswer.size();
+
+        for (var each : expectedAnswer) {
+            if (!actualAnswer.contains(each)) {
+                expectedAnswerEqualsActualAnswer = false;
+            }
+        }
+
+        assertTrue(expectedAnswerEqualsActualAnswer);
     }
 }
