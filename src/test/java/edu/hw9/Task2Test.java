@@ -51,7 +51,7 @@ public class Task2Test {
         };
     }
 
-    static Arguments[] directoryPathsSortedSize() {
+    static Arguments[] directoryPathsSortedBySize() {
         return new Arguments[] {
             Arguments.of(
                 someDirectory,
@@ -132,6 +132,7 @@ public class Task2Test {
         for (var each : expectedAnswer) {
             if (!actualAnswer.contains(each)) {
                 expectedAnswerEqualsActualAnswer = false;
+                break;
             }
         }
 
@@ -139,7 +140,7 @@ public class Task2Test {
     }
 
     @ParameterizedTest
-    @MethodSource("directoryPathsSortedSize")
+    @MethodSource("directoryPathsSortedBySize")
     void givenDirectoryWhenSearchingFilesBySizeThenReturnPath(
         Path rootOfTree,
         List<Path> expectedAnswer
@@ -157,6 +158,7 @@ public class Task2Test {
         for (var each : expectedAnswer) {
             if (!actualAnswer.contains(each)) {
                 expectedAnswerEqualsActualAnswer = false;
+                break;
             }
         }
 
@@ -180,6 +182,7 @@ public class Task2Test {
         for (var each : expectedAnswer) {
             if (!actualAnswer.contains(each)) {
                 expectedAnswerEqualsActualAnswer = false;
+                break;
             }
         }
 
