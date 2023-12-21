@@ -4,6 +4,7 @@ import edu.hw1.Pair;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -36,9 +37,12 @@ public class Task1Test {
             ),
             Arguments.of(
                 List.of(
-                    new Pair<>("degrees", new Double[] {12.73, 24.0, 8.8, -5.0, 4.15}),
-                    new Pair<>("precipitation", new Double[] {23.58, 19.24, 1.21, 19.86}),
-                    new Pair<>("humidity", new Double[] {14.28, 7.38, 1.51, 6.33, 2.66, 24.28})
+                    new Pair<>("degrees", new Double[] {12.73, 24.0}),
+                    new Pair<>("degrees", new Double[] {8.8, -5.0, 4.15}),
+                    new Pair<>("precipitation", new Double[] {23.58, 19.24}),
+                    new Pair<>("precipitation", new Double[] {1.21, 19.86}),
+                    new Pair<>("humidity", new Double[] {14.28, 7.38, 1.51}),
+                    new Pair<>("humidity", new Double[] {6.33, 2.66, 24.28})
                 ),
                 Map.<String, Double>ofEntries(
                     Map.entry("degreesAverage", 8.936),
@@ -83,23 +87,21 @@ public class Task1Test {
     void givenArrayOfDoublesWhenCalculatingSumAverageMaxMinThenReturnedMap(
         List<Pair<String, Double[]>> metricNameAndData,
         Map<String, Double> expectedAnswer
-    ) {
+    ) throws InterruptedException {
         Task1.StatsCollector statsCollector = new Task1.StatsCollector();
+        CountDownLatch countDownLatch = new CountDownLatch(metricNameAndData.size());
 
         for (var each : metricNameAndData) {
             Runnable runnable = () -> {
                 statsCollector.push(each.first, each.second);
+                countDownLatch.countDown();
             };
 
             Thread thread = new Thread(runnable);
             thread.start();
         }
 
-        try {
-            sleep(100);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        countDownLatch.await();
 
         Map<String, Double> actualAnswer = statsCollector.stats();
 
