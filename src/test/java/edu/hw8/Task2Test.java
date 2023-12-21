@@ -3,6 +3,7 @@ package edu.hw8;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import static edu.hw8.task2.CalculateFibonacci.fastFibonacciCalculator;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task2Test {
@@ -49,7 +50,7 @@ public class Task2Test {
         int n,
         int[] expectedAnswer
     ) {
-        int[] actualAnswer = Task2.fastFibonacciCalculator(n);
+        int[] actualAnswer = fastFibonacciCalculator(n);
 
         assertThat(actualAnswer).isEqualTo(expectedAnswer);
     }

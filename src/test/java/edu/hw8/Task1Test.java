@@ -10,6 +10,7 @@ import java.net.UnknownHostException;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
+import edu.hw8.task1.Server;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -50,7 +51,7 @@ public class Task1Test {
         String keyword,
         String expectedAnswer
     ) throws InterruptedException {
-        Runnable startServer = Task1.Server::start;
+        Runnable startServer = Server::start;
 
         Thread serverThread = new Thread(startServer);
         serverThread.start();
@@ -76,7 +77,7 @@ public class Task1Test {
 
     @Test
     void givenServerWhenCatchingManyClientsAndSendingKeywordsThenReturnedQuotes() throws InterruptedException {
-        Runnable startServer = Task1.Server::start;
+        Runnable startServer = Server::start;
 
         Thread serverThread = new Thread(startServer);
         serverThread.start();
