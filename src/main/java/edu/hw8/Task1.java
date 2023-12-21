@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,8 +20,10 @@ public class Task1 {
         private static final int PORT = 4004;
         private static final int THREAD_POOL_SIZE = 10;
         private static final ConcurrentMap<String, String> QUOUTES_MAP = new ConcurrentHashMap<>();
+        private static final AtomicBoolean IS_NEED_TO_STOP = new AtomicBoolean(false);
 
         public static synchronized void start() {
+            IS_NEED_TO_STOP.set(false);
             QUOUTES_MAP.put(
                 "личности",
                 "Не переходи на личности там, где их нет"
@@ -44,10 +47,19 @@ public class Task1 {
                 LOGGER.trace("Server started on port: {}", PORT);
 
                 while (true) {
-                    Socket clientSocket = serverSocket.accept();
-                    LOGGER.trace("We found a client, start connecting");
+                    try {
+                        Socket clientSocket = serverSocket.accept();
+                        LOGGER.trace("We found a client, start connecting");
 
-                    pool.execute(new ClientHandler(clientSocket));
+                        pool.execute(new ClientHandler(clientSocket, IS_NEED_TO_STOP, serverSocket));
+                    } catch (IOException e) {
+                        LOGGER.trace("ServerSocket closed");
+                    }
+
+                    if (IS_NEED_TO_STOP.get()) {
+                        break;
+                    }
+
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -56,9 +68,14 @@ public class Task1 {
 
         private static final class ClientHandler implements Runnable {
             private final Socket clientSocket;
+            private final AtomicBoolean isNeedToStop;
 
-            ClientHandler(Socket clientSocket) {
+            private ServerSocket serverSocket;
+
+            ClientHandler(Socket clientSocket, AtomicBoolean isNeedToStop, ServerSocket serverSocket) {
+                this.isNeedToStop = isNeedToStop;
                 this.clientSocket = clientSocket;
+                this.serverSocket = serverSocket;
             }
 
             @Override
@@ -69,9 +86,17 @@ public class Task1 {
                     LOGGER.trace("Established connection with the client");
 
                     while ((keyword = in.readLine()) != null) {
-                        String quote = QUOUTES_MAP.get(keyword.toLowerCase());
-
                         LOGGER.trace("the client sent a message: {}", keyword);
+
+                        String quote = QUOUTES_MAP.get(keyword.toLowerCase());
+                        if (keyword.equalsIgnoreCase("stop")) {
+                            LOGGER.trace("the client stop work");
+
+                            IS_NEED_TO_STOP.set(true);
+                            serverSocket.close();
+                            break;
+                        }
+
                         if (quote != null) {
                             LOGGER.trace("The server responded with a quote: {}", quote);
                             out.println(quote);
@@ -79,8 +104,8 @@ public class Task1 {
                             LOGGER.trace("The server did not find the quote");
                             out.println("Цитаты не найдено");
                         }
-
                     }
+                    clientSocket.close();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
