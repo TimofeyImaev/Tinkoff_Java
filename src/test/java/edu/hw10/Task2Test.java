@@ -1,5 +1,12 @@
 package edu.hw10;
 
+import edu.hw10.task2.CacheProxy;
+import edu.hw10.task2.Concatenate;
+import edu.hw10.task2.Fib;
+import edu.hw10.task2.FibCalculator;
+import edu.hw10.task2.Square;
+import edu.hw10.task2.SquareOfNumber;
+import edu.hw10.task2.StringConcatenation;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -7,8 +14,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class Task2Test {
     @Test
     void givenFibFunctionWhenUseFunctionTwoTimesThenCheckCache() {
-        Task2.FibCalculator fibCalculator = new Task2.Fib();
-        Task2.FibCalculator proxy = Task2.CacheProxy.create(fibCalculator, Task2.FibCalculator.class);
+        FibCalculator fibCalculator = new Fib();
+        FibCalculator proxy = CacheProxy.create(fibCalculator, FibCalculator.class);
 
         long expectedAnswerFive = proxy.fib(5);
         long expectedAnswerSeven = proxy.fib(7);
@@ -25,8 +32,8 @@ public class Task2Test {
 
     @Test
     void givenSquareFunctionWhenUseFunctionTwoTimesThenCheckCache() {
-        Task2.SquareOfNumber square = new Task2.Square();
-        Task2.SquareOfNumber proxy = Task2.CacheProxy.create(square, Task2.SquareOfNumber.class);
+        SquareOfNumber square = new Square();
+        SquareOfNumber proxy = CacheProxy.create(square, SquareOfNumber.class);
 
         long expectedAnswerFive = proxy.square(5);
         long expectedAnswerTen = proxy.square(10);
@@ -43,8 +50,8 @@ public class Task2Test {
 
     @Test
     void givenConcatenateFunctionWhenUseFunctionTwoTimesThenCheckCache() {
-        Task2.StringConcatenation fibCalculator = new Task2.Concatenate();
-        Task2.StringConcatenation proxy = Task2.CacheProxy.create(fibCalculator, Task2.StringConcatenation.class);
+        StringConcatenation fibCalculator = new Concatenate();
+        StringConcatenation proxy = CacheProxy.create(fibCalculator, StringConcatenation.class);
 
         String expectedAnswerLengthSix = proxy.concatenate("aba", "cab");
         String expectedAnswerLengthSeven = proxy.concatenate("htye", "dgs");
