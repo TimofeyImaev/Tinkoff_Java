@@ -1,5 +1,6 @@
 package edu.hw10;
 
+import edu.hw1.Pair;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -59,7 +60,7 @@ public class Task2 {
 
     public static class CacheProxy implements InvocationHandler {
         private Object target;
-        private HashMap<String, Object> cache;
+        private HashMap<Pair<String, Object[]>, Object> cache;
 
         public CacheProxy(Object target) {
             this.target = target;
@@ -77,11 +78,13 @@ public class Task2 {
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             String methodName = method.getName();
-            if (cache.containsKey(methodName)) {
-                return cache.get(methodName);
+            Pair<String, Object[]> key = new Pair<>(methodName, args);
+
+            if (cache.containsKey(key)) {
+                return cache.get(key);
             } else {
                 Object result = method.invoke(target, args);
-                cache.put(methodName, result);
+                cache.put(key, result);
                 return result;
             }
         }
