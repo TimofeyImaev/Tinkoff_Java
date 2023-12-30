@@ -2,15 +2,14 @@ package edu.hw10.task1;
 
 import edu.hw10.task1.HelpClasses.Max;
 import edu.hw10.task1.HelpClasses.Min;
-import edu.hw10.task1.HelpClasses.SomeClass;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Random;
 import org.jetbrains.annotations.NotNull;
 import static edu.hw10.task1.MaxHandler.maxAnnotationHandler;
 import static edu.hw10.task1.MinHandler.minAnnotationHandler;
-import static edu.hw10.task1.RandomObject.getRandomObjectByClass;
+import static edu.hw10.task1.RandomObjectByConstructor.getRandomObjectByClass;
+import static edu.hw10.task1.RandomObjectByMethod.getRandomObjectByClass;
 
 public class RandomObjectGenerator {
     private static final String RANDOM_STRING = "RandomString";
@@ -20,13 +19,9 @@ public class RandomObjectGenerator {
         T object = null;
         if (factoryMethod != null && !factoryMethod.isEmpty()) {
             try {
-                Method method = null;
-                if (clazz == SomeClass.class) {
-                    method = clazz.getDeclaredMethod(factoryMethod, String.class, Integer.class);
-                    method.setAccessible(true);
-                    object = (T) method.invoke(null, "", RANDOM.nextInt());
-                }
-            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                object = getRandomObjectByClass(clazz, factoryMethod);
+            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException
+                     | InstantiationException e) {
                 throw new RuntimeException(e);
             }
         } else {
