@@ -12,4 +12,10 @@ public class Task2 {
             return a * b;
         }
     }
+
+    static class ArithmeticUtilsUndoDelegator {
+        public static int sum(int a, int b) {
+            return a + b;
+        }
+    }
 }

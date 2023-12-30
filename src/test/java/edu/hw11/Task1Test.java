@@ -21,6 +21,6 @@ public class Task1Test {
             .getLoaded()
             .newInstance();
 
-        assertEquals((new Task1.HelloWorld()).toString(), element.toString());
+        assertEquals("Hello, ByteBuddy!", element.toString());
     }
 }
