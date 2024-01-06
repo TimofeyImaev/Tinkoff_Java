@@ -1,7 +1,6 @@
 package edu.project5;
 
 import java.lang.invoke.CallSite;
-import java.lang.invoke.LambdaConversionException;
 import java.lang.invoke.LambdaMetafactory;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
@@ -27,6 +26,7 @@ public class ReflectionBenchmark {
     private Student student;
     private Method method;
     private MethodHandle replaceMH;
+    private MethodHandle lambdaInvoke;
     private MethodType methodType;
     private CallSite callSite;
 
@@ -65,7 +65,9 @@ public class ReflectionBenchmark {
             MethodType.methodType(Supplier.class, Student.class),
             MethodType.methodType(Object.class),
             handle,
-            MethodType.methodType(String.class));
+            MethodType.methodType(String.class)
+        );
+        lambdaInvoke = callSite.getTarget().bindTo(student);
     }
 
     @Benchmark
@@ -89,7 +91,7 @@ public class ReflectionBenchmark {
     @Benchmark
     public void invokeLambda(Blackhole bh)
         throws Throwable {
-        Supplier<String> lambda = (Supplier<String>) callSite.getTarget().bindTo(student).invoke();
+        Supplier<String> lambda = (Supplier<String>) lambdaInvoke.invoke();
 
         bh.consume(lambda.get());
     }
